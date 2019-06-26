@@ -17,8 +17,8 @@ export class PhotoService {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
-    }
-    
+    };
+
     this.camera.getPicture(options).then((imageData) => {
       // Add new photo to gallery
       this.photos.unshift({
@@ -29,7 +29,7 @@ export class PhotoService {
       this.storage.set('photos', this.photos);
     }, (err) => {
      // Handle error
-     console.log("Camera issue: " + err);
+     console.log('Camera issue: ' + err);
     });
 
   }
