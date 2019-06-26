@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.photogallery" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>Coffee Recognition</name>
+    <description>This is my graduation project. This is my graduation project. The objective is to detect the disease in the coffee leaf and the contamination percentage.</description>
+    <author email="lucasbsilva29@gmail.com" href="mailto:lucasbsilva29@gmail.com?Subject=Coffee%20Recognition">Lucas de Brito Silva | Alvao Leandro Cavalcante</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
