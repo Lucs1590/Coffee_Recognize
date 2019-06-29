@@ -5,6 +5,10 @@ language: node_js
 node_js:
   - '11'
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=6f9ccfe3bc4a26266bdc04bad4fc976ef51ef70f6a60207432951b84f8bbc606
+
 addons:
   apt:
     sources:
@@ -20,12 +24,16 @@ install:
   - npm install
 
 before_script:
+  - yarn global add nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - nyc --reporter=lcov yarn run unit
+  
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - echo $TRAVIS_TEST_RESULT
