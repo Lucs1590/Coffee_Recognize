@@ -41,6 +41,7 @@
     "handlebars": "^4.0.14",
     "js-yaml": "^3.13.1",
     "rxjs": "~6.3.3",
+    "shelljs": "^0.8.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
