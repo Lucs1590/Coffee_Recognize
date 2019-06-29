@@ -1,9 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PhotoRecognize } from './tab2.page';
+import { Camera } from '@ionic-native/camera/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
-describe('Tab2Page', () => {
+describe('PhotoRecognize', () => {
   let component: PhotoRecognize;
   let fixture: ComponentFixture<PhotoRecognize>;
 
@@ -11,6 +12,8 @@ describe('Tab2Page', () => {
     TestBed.configureTestingModule({
       declarations: [PhotoRecognize],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [Camera],
+      imports: [ IonicStorageModule.forRoot() ]
     }).compileComponents();
   }));
 
