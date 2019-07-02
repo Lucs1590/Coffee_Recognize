@@ -38,7 +38,7 @@ export class PhotoService {
   }
 
   processPhoto(photo) {
-    this.apiService.uploadFoto(photo).subscribe(data => {
+    this.apiService.uploadPhotoRecognize(photo).subscribe(data => {
       console.log(data);
     }, err => {
       console.log(err);
