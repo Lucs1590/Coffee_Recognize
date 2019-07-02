@@ -24,7 +24,7 @@ export class ApiService {
   }
 
   public uploadFoto(photo: Photo) {
-    return this.http.post(`${this.API_URL}/`, photo, this.getHeader());
+    return this.http.post(`${this.API_URL}/picture/process`, photo, this.getHeader());
   }
 }
 
