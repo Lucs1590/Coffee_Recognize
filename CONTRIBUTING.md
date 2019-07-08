@@ -10,8 +10,6 @@ Linguagem
 
 Desenvolvimento
 -----
-Inspirado no guia criado pelo @arnaldopereira-luizalabs para o p36.
-
  - Desenvolva apenas em seu branch.
  - Faça rebase com o master antes de criar pull requests.
  - Faça rebase do master em seu branch diariamente.
