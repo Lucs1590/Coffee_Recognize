@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Provider } from '@angular/compiler/src/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,8 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Camera,
+    HttpClient,
+    HttpHandler as Provider,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
