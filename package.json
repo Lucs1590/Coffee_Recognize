@@ -40,6 +40,7 @@
     "core-js": "^2.6.9",
     "handlebars": "^4.1.2",
     "js-yaml": "^3.13.1",
+    "karma-teamcity-reporter": "^1.1.0",
     "rxjs": "~6.3.3",
     "shelljs": "^0.8.3",
     "zone.js": "^0.8.29"
