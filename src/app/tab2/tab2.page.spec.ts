@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PhotoRecognize } from './tab2.page';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PhotoRecognize', () => {
   let component: PhotoRecognize;
@@ -13,7 +14,7 @@ describe('PhotoRecognize', () => {
       declarations: [PhotoRecognize],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [Camera],
-      imports: [ IonicStorageModule.forRoot() ]
+      imports: [IonicStorageModule.forRoot(), HttpClientTestingModule]
     }).compileComponents();
   }));
 
