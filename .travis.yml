@@ -32,4 +32,6 @@ script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
 
 after_script:
+  - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.frontend.json coverage/lcov.info
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.frontend.json                  # Sum both coverage parts into coverage/codeclimate.json
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

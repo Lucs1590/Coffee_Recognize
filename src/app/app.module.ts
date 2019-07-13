@@ -16,7 +16,10 @@ import { Provider } from '@angular/compiler/src/core';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
     IonicStorageModule.forRoot()
   ],
   providers: [
