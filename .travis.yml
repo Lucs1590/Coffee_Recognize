@@ -5,10 +5,6 @@ language: node_js
 node_js:
   - '11'
 
-env:
-  global:
-    - CC_TEST_REPORTER_ID=6f9ccfe3bc4a26266bdc04bad4fc976ef51ef70f6a60207432951b84f8bbc606
-
 addons:
   apt:
     sources:
