@@ -27,15 +27,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'photo-quant',
-        children: [
-          {
-            path: '',
-            loadChildren: '../photo-quant/photo-quant.module#PhotoQuantifyModule'
-          }
-        ]
-      },
-      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
