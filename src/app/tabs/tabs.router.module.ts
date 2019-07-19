@@ -27,11 +27,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'quantify',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../photo-quant/quantify.module#PhotoQuantifyModule'
           }
         ]
       },

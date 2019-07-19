@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PhotoQuantify } from './tab3.page';
+import { PhotoQuantify } from './quantify.page';
 
 @NgModule({
   imports: [
@@ -14,4 +14,4 @@ import { PhotoQuantify } from './tab3.page';
   ],
   declarations: [PhotoQuantify]
 })
-export class Tab3PageModule {}
+export class PhotoQuantifyModule { }

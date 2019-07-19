@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-quantify',
+  templateUrl: 'quantify.page.html',
+  styleUrls: ['quantify.page.scss']
 })
 export class PhotoQuantify implements OnInit {
   ngOnInit() {
