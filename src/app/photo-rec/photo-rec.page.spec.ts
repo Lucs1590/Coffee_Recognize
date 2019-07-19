@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PhotoRecognize } from './tab2.page';
+import { PhotoRecognize } from './photo-rec.page';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

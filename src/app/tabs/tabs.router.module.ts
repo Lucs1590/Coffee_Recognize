@@ -18,11 +18,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'photo-rec',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../photo-rec/photo-rec.module#PhotoRecognizePageModule'
           }
         ]
       },
@@ -53,4 +53,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-photo-rec',
+  templateUrl: 'photo-rec.page.html',
+  styleUrls: ['photo-rec.page.scss']
 })
 export class PhotoRecognize implements OnInit {
   currentImage: any;
