@@ -1,9 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Home } from './tab1.page';
+import { Home } from './home.page';
 
-describe('Tab1Page', () => {
+describe('HomeComponent', () => {
   let component: Home;
   let fixture: ComponentFixture<Home>;
 
