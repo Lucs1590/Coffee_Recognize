@@ -28,7 +28,7 @@ export class Home implements OnInit {
   }
 
   shareInstagram() {
-    this.socialSharing.shareViaInstagram(this.text_share + this.download_url, null).then(() => {
+    this.socialSharing.shareViaInstagram(this.text_share + '\n' + this.download_url, null).then(() => {
 
     }).catch(error => {
 
@@ -36,8 +36,8 @@ export class Home implements OnInit {
   }
 
   shareEmail() {
-    this.socialSharing.shareViaEmail(this.text_share + this.download_url, 'Coffee Recognition', ['lucasbsilva29@gmail.com'],
-      null, null, this.img_url).then(() => {
+    this.socialSharing.shareViaEmail(this.text_share + '\n' + this.download_url, 'Coffee Recognition', ['lucasbsilva29@gmail.com'],
+      null, null, null).then(() => {
       }).catch(error => {
       });
   }
