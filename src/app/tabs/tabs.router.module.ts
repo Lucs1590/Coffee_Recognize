@@ -27,11 +27,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'quantify',
+        path: 'photo-quant',
         children: [
           {
             path: '',
-            loadChildren: '../photo-quant/quantify.module#PhotoQuantifyModule'
+            loadChildren: '../photo-quant/photo-quant.module#PhotoQuantifyModule'
           }
         ]
       },

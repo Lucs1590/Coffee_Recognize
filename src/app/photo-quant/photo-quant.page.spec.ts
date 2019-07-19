@@ -1,9 +1,9 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PhotoQuantify } from './quantify.page';
+import { PhotoQuantify } from './photo-quant.page';
 
-describe('PhotoQuantifyComponent', () => {
+describe('PhotoQuantify', () => {
   let component: PhotoQuantify;
   let fixture: ComponentFixture<PhotoQuantify>;
 
