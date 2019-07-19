@@ -9,15 +9,33 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-    <ion-col col-6 *ngFor="let photo of photoService.photos">
+      <ion-col col-6 *ngFor="let photo of photoService.photos">
         <img [src]="photo.data" />
-        </ion-col>
+      </ion-col>
     </ion-row>
   </ion-grid>
-  
+
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button (click)="photoService.takePicture()">
-        <ion-icon name="camera"></ion-icon>
+    <ion-fab-button (click)="photoService.takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab horizontal="end" vertical="top" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="more"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+
+      <ion-fab-button color="light">
+        <ion-icon name="apps"></ion-icon>
       </ion-fab-button>
+
+      <ion-fab-button color="light" [routerLink]="">
+        <ion-icon name="calculator"></ion-icon>
+      </ion-fab-button>
+
+
+    </ion-fab-list>
   </ion-fab>
 </ion-content>
