@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-photo-rec',
@@ -9,10 +10,13 @@ import { PhotoService } from '../services/photo.service';
 export class PhotoRecognize implements OnInit {
   currentImage: any;
 
-  constructor(public photoService: PhotoService) {  }
+  constructor(public photoService: PhotoService, public router: Router) { }
 
   ngOnInit() {
     this.photoService.loadSaved();
   }
 
+  QuantifyComponent() {
+    this.router.navigate(['/photo-quant']);
+  }
 }
