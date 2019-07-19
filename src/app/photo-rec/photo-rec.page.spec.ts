@@ -4,6 +4,7 @@ import { PhotoRecognize } from './photo-rec.page';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PhotoRecognize', () => {
   let component: PhotoRecognize;
@@ -14,7 +15,11 @@ describe('PhotoRecognize', () => {
       declarations: [PhotoRecognize],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [Camera],
-      imports: [IonicStorageModule.forRoot(), HttpClientTestingModule]
+      imports: [
+        IonicStorageModule.forRoot(),
+        HttpClientTestingModule,
+        RouterTestingModule
+      ]
     }).compileComponents();
   }));
 
