@@ -14,7 +14,7 @@ export class ApiService {
     const usuario = JSON.parse(localStorage.getItem('currentUser'));
     return {
       headers: {
-        'Authorization': 'Bearer ' + (usuario ? usuario.token : '')
+        'Authorization': 'Bearer ' + (usuario || '')
       }
     };
   }
