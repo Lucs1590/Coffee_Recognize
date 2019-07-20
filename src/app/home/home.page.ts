@@ -22,6 +22,9 @@ export class Home implements OnInit {
   shareWhatsApp() {
     this.socialSharing.shareViaWhatsApp(this.text_share, this.img_url, this.download_url).then(() => {
     }).catch(error => {
+      this.socialSharing.shareViaWhatsApp(this.text_share, null, this.download_url).then(() => {
+      });
+    }).finally(() => {
     });
   }
 
