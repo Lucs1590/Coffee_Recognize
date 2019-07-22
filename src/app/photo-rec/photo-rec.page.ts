@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-photo-rec',
@@ -16,10 +16,18 @@ export class PhotoRecognize implements OnInit {
     public photoService: PhotoService,
     public router: Router,
     public apiService: ApiService,
-    public toastController: ToastController) { }
+    public toastController: ToastController,
+    public modalController: ModalController
+  ) { }
 
   ngOnInit() {
     this.photoService.loadSaved();
+  }
+
+  open(photo) {
+    this.currentImage = photo;
+    this.presentModal();
+
   }
 
   quantifyComponent() {
@@ -47,5 +55,12 @@ export class PhotoRecognize implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+  async presentModal() {
+/*     const modal = await this.modalController.create({
+      component: 
+    });
+    return await modal.present(); */
   }
 }
