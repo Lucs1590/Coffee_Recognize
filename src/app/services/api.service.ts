@@ -23,8 +23,12 @@ export class ApiService {
     return this.http.get(`${this.API_URL}/`, this.getHeader());
   }
 
-  public uploadPhotoRecognize(photo: any) {
+  public uploadOnePhoto(photo: any) {
     return this.http.post(`${this.API_URL}/picture/process`, photo, this.getHeader());
+  }
+
+  public uploadLoteOfPhotos(photos: Photo[]) {
+    return this.http.post(`${this.API_URL}/picture/process`, photos, this.getHeader());
   }
 }
 
