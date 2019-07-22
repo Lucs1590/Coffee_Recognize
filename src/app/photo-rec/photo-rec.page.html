@@ -27,13 +27,17 @@
     </ion-fab-button>
     <ion-fab-list side="bottom">
 
-      <ion-fab-button color="light">
-        <ion-icon name="apps"></ion-icon>
+      <ion-fab-button color="success" (click)="sendPhotos()">
+        <ion-icon name="send"></ion-icon>
       </ion-fab-button>
 
-      <ion-fab-button color="light" (click)="QuantifyComponent()">
-        <ion-icon name="calculator"></ion-icon>
+      <ion-fab-button color="danger" (click)="clearPhotos()">
+        <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
+
+      <!--       <ion-fab-button color="light" (click)="QuantifyComponent()">
+        <ion-icon name="calculator"></ion-icon>
+      </ion-fab-button> -->
 
 
     </ion-fab-list>
