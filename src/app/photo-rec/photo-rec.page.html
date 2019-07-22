@@ -10,7 +10,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-6 *ngFor="let photo of photoService.photos">
-        <img [src]="photo.data" />
+        <img [src]="photo.data" (click)="open(photo.data)" />
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -34,12 +34,24 @@
       <ion-fab-button color="danger" (click)="clearPhotos()">
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
-
-      <!--       <ion-fab-button color="light" (click)="QuantifyComponent()">
-        <ion-icon name="calculator"></ion-icon>
-      </ion-fab-button> -->
-
-
     </ion-fab-list>
   </ion-fab>
+
+  <!--     <ion-fab horizontal="end" vertical="top" slot="fixed">
+      <ion-fab-button color="light">
+        <ion-icon name="more"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="bottom">
+
+        <ion-fab-button color="light" (click)="processImage()">
+          <ion-icon name="thumbs-up"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button color="light" (click)="quantifyComponent()">
+          <ion-icon name="calculator"></ion-icon>
+        </ion-fab-button>
+
+      </ion-fab-list>
+    </ion-fab> -->
+
 </ion-content>
