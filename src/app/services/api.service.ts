@@ -27,8 +27,9 @@ export class ApiService {
     return this.http.post(`${this.API_URL}/picture/process`, photos, this.getHeader());
   }
 
-  public send_calcOnePhoto(photo: any) {
-    return this.http.post(`${this.API_URL}/picture/process`, photo, this.getHeader());
+  public send_calcOnePhoto(photo: any, mensure: number) {
+    const body = { 'photo': photo, 'mensure': mensure };
+    return this.http.post(`${this.API_URL}/picture/process`, body, this.getHeader());
   }
 }
 

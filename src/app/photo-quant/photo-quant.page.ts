@@ -17,16 +17,16 @@ export class PhotoQuantify implements OnInit {
   ) { }
 
   ngOnInit() {
-    // input
-    this.send_calcPhoto();
+    this.utils.presentAlertPrompt();
+    this.send_calcPhoto(5);
   }
 
   close() {
     this.utils.RecognitionComponent();
   }
 
-  send_calcPhoto() {
-    this.apiService.send_calcOnePhoto(this.utils.currentImage).subscribe(data => {
+  send_calcPhoto(mensure) {
+    this.apiService.send_calcOnePhoto(this.utils.currentImage, mensure).subscribe(data => {
       this.utils.presentLoading();
       this.processedImage = data;
       this.processed = false;
