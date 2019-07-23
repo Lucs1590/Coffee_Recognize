@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController, ModalController } from '@ionic/angular';
+import { ToastController, ModalController, LoadingController } from '@ionic/angular';
 import { PreviewPage } from '../preview/preview.page';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ export class UtilsService {
     public toastController: ToastController,
     public modalController: ModalController,
     public router: Router,
+    public loadingController: LoadingController
   ) { }
 
   async presentToast(msg: string) {
@@ -37,6 +38,18 @@ export class UtilsService {
     this.modalController.dismiss({
       'dismissed': true
     });
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Hellooo',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
   }
 
   RecognitionComponent() {
