@@ -3,15 +3,16 @@ import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss'],
+  templateUrl: './preview.page.html',
+  styleUrls: ['./preview.page.scss'],
 })
-export class PreviewComponent implements OnInit {
+export class PreviewPage implements OnInit {
 
   constructor(
     public utils: UtilsService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }
