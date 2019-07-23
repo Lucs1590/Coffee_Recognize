@@ -11,9 +11,12 @@ export class PreviewPage implements OnInit {
 
   @Input() currentImage;
 
-  constructor() { }
+  constructor(public utils: UtilsService) { }
 
   ngOnInit() {
   }
 
+  close() {
+    this.utils.dismissModal();
+  }
 }
