@@ -19,16 +19,16 @@ export class ApiService {
     };
   }
 
-  public getFoto() {
-    return this.http.get(`${this.API_URL}/`, this.getHeader());
-  }
-
-  public uploadOnePhoto(photo: any) {
+  public sendOnePhoto(photo: any) {
     return this.http.post(`${this.API_URL}/picture/process`, photo, this.getHeader());
   }
 
-  public uploadLoteOfPhotos(photos: Photo[]) {
+  public sendLoteOfPhotos(photos: Photo[]) {
     return this.http.post(`${this.API_URL}/picture/process`, photos, this.getHeader());
+  }
+
+  public send_calcOnePhoto(photo: any) {
+    return this.http.post(`${this.API_URL}/picture/process`, photo, this.getHeader());
   }
 }
 
