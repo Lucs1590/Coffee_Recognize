@@ -29,7 +29,7 @@ export class PreviewPage implements OnInit {
 
   sendPhoto() {
     this.apiService.sendOnePhoto(this.currentImage).subscribe(data => {
-      // loading
+      this.utils.presentLoading();
       this.processedImage = data;
       this.processed = false;
       this.utils.presentToast('Processing performed successfully. 🎉');

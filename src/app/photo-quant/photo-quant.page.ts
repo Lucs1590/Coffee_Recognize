@@ -27,7 +27,7 @@ export class PhotoQuantify implements OnInit {
 
   send_calcPhoto() {
     this.apiService.send_calcOnePhoto(this.utils.currentImage).subscribe(data => {
-      // loading
+      this.utils.presentLoading();
       this.processedImage = data;
       this.processed = false;
       this.utils.presentToast('Processing performed successfully. 🎉');
