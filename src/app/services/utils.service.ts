@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController, ModalController, LoadingController } from '@ionic/angular';
+import { ToastController, ModalController, LoadingController, AlertController } from '@ionic/angular';
 import { PreviewPage } from '../preview/preview.page';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,8 @@ export class UtilsService {
     public toastController: ToastController,
     public modalController: ModalController,
     public router: Router,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public alertController: AlertController
   ) { }
 
   async presentToast(msg: string) {
@@ -48,6 +49,36 @@ export class UtilsService {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
+  }
+
+  async presentAlertPrompt() {
+    const alert = await this.alertController.create({
+      header: 'Measure!',
+      inputs: [
+        {
+          name: 'measure',
+          type: 'text',
+          placeholder: '5cm'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'OK',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   RecognitionComponent() {
