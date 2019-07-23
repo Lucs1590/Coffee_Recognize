@@ -42,4 +42,9 @@ export class UtilsService {
   RecognitionComponent() {
     this.router.navigate(['tabs', 'photo-rec']);
   }
+
+  QuantifyComponent(img) {
+    this.currentImage = img;
+    this.router.navigate(['/photo-quant']);
+  }
 }
