@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-preview',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public utils: UtilsService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }
