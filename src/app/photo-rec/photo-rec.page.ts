@@ -11,8 +11,6 @@ import { PreviewComponent } from '../preview/preview.component';
   styleUrls: ['photo-rec.page.scss']
 })
 export class PhotoRecognize implements OnInit {
-  currentImage: any;
-
   constructor(
     public photoService: PhotoService,
     public router: Router,
@@ -25,9 +23,8 @@ export class PhotoRecognize implements OnInit {
   }
 
   open(photo) {
-    this.currentImage = photo;
+    this.utils.currentImage = photo;
     this.utils.presentModal(PreviewComponent);
-
   }
 
   quantifyComponent() {

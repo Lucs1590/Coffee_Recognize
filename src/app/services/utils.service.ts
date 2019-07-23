@@ -5,6 +5,7 @@ import { ToastController, ModalController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class UtilsService {
+  currentImage: any;
 
   constructor(
     public toastController: ToastController,
