@@ -1,3 +1,20 @@
-<p>
-  preview works!
-</p>
+<ion-content>
+  <img [src]="utils.currentImage" />
+
+  <ion-fab horizontal="end" vertical="top" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="more"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+
+      <ion-fab-button color="light" (click)="processImage()">
+        <ion-icon name="thumbs-up"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button color="light" (click)="quantifyComponent()">
+        <ion-icon name="calculator"></ion-icon>
+      </ion-fab-button>
+
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
