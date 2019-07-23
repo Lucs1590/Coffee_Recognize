@@ -1,4 +1,14 @@
 <ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-icon name="arrow-back" (click)="close()" size="large" class="ion-float-left">
+      </ion-icon>
+      <ion-title style="height:2rem;">
+        Preview
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <img [src]="currentImage" />
 
   <ion-fab horizontal="end" vertical="top" slot="fixed">
