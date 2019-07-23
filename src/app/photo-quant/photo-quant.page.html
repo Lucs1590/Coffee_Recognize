@@ -8,4 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <img [src]="processedImage" *ngIf="processed" />
+  <img [src]="utils.currentImage" *ngIf="!processed" />
+</ion-content>
