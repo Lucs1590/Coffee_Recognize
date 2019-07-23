@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController, ModalController } from '@ionic/angular';
+import { PreviewPage } from '../preview/preview.page';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,12 @@ export class UtilsService {
     toast.present();
   }
 
-  async presentModal(_component) {
+  async presentModal(currentImage) {
     const modal = await this.modalController.create({
-      component: _component
+      component: PreviewPage,
+      componentProps: {
+        'currentImage': currentImage
+      }
     });
     return await modal.present();
   }

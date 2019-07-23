@@ -3,7 +3,6 @@ import { PhotoService } from '../services/photo.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilsService } from '../services/utils.service';
-import { PreviewComponent } from '../preview/preview.component';
 
 @Component({
   selector: 'app-photo-rec',
@@ -23,8 +22,7 @@ export class PhotoRecognize implements OnInit {
   }
 
   open(photo) {
-    this.utils.currentImage = photo;
-    this.utils.presentModal(PreviewComponent);
+    this.utils.presentModal(photo);
   }
 
   quantifyComponent() {

@@ -14,6 +14,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { Provider } from '@angular/compiler/src/core';
+import { PreviewPageModule } from './preview/preview.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { Provider } from '@angular/compiler/src/core';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    PreviewPageModule,
     IonicStorageModule.forRoot()
   ],
   providers: [
