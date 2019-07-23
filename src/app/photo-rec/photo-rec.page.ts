@@ -25,16 +25,12 @@ export class PhotoRecognize implements OnInit {
     this.utils.presentModal(photo);
   }
 
-  quantifyComponent() {
-    this.router.navigate(['/photo-quant']);
-  }
-
   clearPhotos() {
     this.photoService.photos = [];
   }
 
   sendPhotos() {
-    this.apiService.uploadLoteOfPhotos(this.photoService.photos).subscribe(data => {
+    this.apiService.sendLoteOfPhotos(this.photoService.photos).subscribe(data => {
       console.log(data);
       this.clearPhotos();
       this.utils.presentToast('Processing performed successfully. We will send you an email. 🎉');
