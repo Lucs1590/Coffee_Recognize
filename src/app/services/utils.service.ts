@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController, ModalController } from '@ionic/angular';
 import { PreviewPage } from '../preview/preview.page';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class UtilsService {
 
   constructor(
     public toastController: ToastController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public router: Router,
   ) { }
 
   async presentToast(msg: string) {
@@ -29,5 +31,15 @@ export class UtilsService {
       }
     });
     return await modal.present();
+  }
+
+  dismissModal() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+
+  RecognitionComponent() {
+    this.router.navigate(['tabs', 'photo-rec']);
   }
 }

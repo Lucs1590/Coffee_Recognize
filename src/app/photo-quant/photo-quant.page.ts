@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-photo-quant',
@@ -8,13 +9,15 @@ import { Router } from '@angular/router';
 })
 export class PhotoQuantify implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(
+    public utils: UtilsService
+  ) { }
 
   ngOnInit() {
 
   }
 
-  RecognitionComponent() {
-    this.router.navigate(['tabs', 'photo-rec']);
+  close() {
+    this.utils.RecognitionComponent();
   }
 }
