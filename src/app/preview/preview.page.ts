@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
+import { NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-preview',
@@ -8,9 +9,9 @@ import { UtilsService } from '../services/utils.service';
 })
 export class PreviewPage implements OnInit {
 
-  constructor(
-    public utils: UtilsService
-  ) { }
+  @Input() currentImage;
+
+  constructor() { }
 
   ngOnInit() {
   }
