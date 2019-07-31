@@ -1,16 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
 import { NavParams } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-preview',
   templateUrl: './preview.page.html',
   styleUrls: ['./preview.page.scss'],
 })
-export class PreviewPage implements OnInit {
+export class PreviewPage implements OnInit, OnDestroy {
   processedImage;
   processed: boolean;
+  subscription: Subscription;
 
   constructor(
     public utils: UtilsService,
@@ -18,7 +20,14 @@ export class PreviewPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.subscription) {
+      this.subscription = new Subscription();
+    }
     this.processed = false;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   close() {

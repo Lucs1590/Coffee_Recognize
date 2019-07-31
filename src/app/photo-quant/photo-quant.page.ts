@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
 import { ApiService } from '../services/api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-photo-quant',
   templateUrl: 'photo-quant.page.html',
   styleUrls: ['photo-quant.page.scss']
 })
-export class PhotoQuantify implements OnInit {
+export class PhotoQuantify implements OnInit, OnDestroy {
   processedImage;
   processed: boolean;
+  subscription: Subscription;
 
   constructor(
     public utils: UtilsService,
@@ -17,8 +19,15 @@ export class PhotoQuantify implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!this.subscription) {
+      this.subscription = new Subscription();
+    }
     this.utils.presentAlertPrompt();
     this.send_calcPhoto(5);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   close() {
