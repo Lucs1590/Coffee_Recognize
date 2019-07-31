@@ -46,9 +46,4 @@ export class PreviewPage implements OnInit, OnDestroy {
       this.utils.presentToast('We had an error uploading, please try again! 🥺');
     });
   }
-
-  quantifyComponent() {
-    this.close();
-    this.utils.QuantifyComponent();
-  }
 }
