@@ -23,13 +23,13 @@ export class ApiService {
   }
 
   public sendOnePhoto(photo: any) {
-    const body = { file: photo, email: this.storage.getItem('access') };
+    const body = { file: photo, email: this.storage.get('access').then(value => value) };
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
     return data;
   }
 
   public sendLoteOfPhotos(photos: Photo[]) {
-    const body = { file: photos, email: this.storage.getItem('access') };
+    const body = { file: photos, email: this.storage.get('access').then(value => value) };
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
     return data;
   }
