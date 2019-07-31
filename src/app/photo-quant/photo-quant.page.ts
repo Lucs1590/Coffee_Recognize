@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
@@ -22,7 +22,7 @@ export class PhotoQuantify implements OnInit, OnDestroy {
     if (!this.subscription) {
       this.subscription = new Subscription();
     }
-    this.utils.presentAlertPrompt();
+    this.presentAlertPrompt();
     this.send_calcPhoto(5);
   }
 
@@ -31,7 +31,7 @@ export class PhotoQuantify implements OnInit, OnDestroy {
   }
 
   close() {
-    this.utils.RecognitionComponent();
+    this.utils.PreviewComponent(this.utils.currentImage);
   }
 
   send_calcPhoto(mensure) {
@@ -44,5 +44,35 @@ export class PhotoQuantify implements OnInit, OnDestroy {
       console.log(err);
       this.utils.presentToast('We had an error uploading, please try again! 🥺');
     });
+  }
+
+  async presentAlertPrompt() {
+    const alert = await this.utils.alertController.create({
+      header: 'Enter leaf width!',
+      inputs: [
+        {
+          name: 'measure',
+          type: 'text',
+          placeholder: '5cm'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.utils.PreviewComponent(this.utils.currentImage);
+          }
+        }, {
+          text: 'OK',
+          handler: (data) => {
+            this.send_calcPhoto(data.mensure)
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
