@@ -75,8 +75,8 @@ export class Home implements OnInit {
         }, {
           text: 'OK',
           handler: (data) => {
-            this.storage.set('acess', data.email);
-            this.storage.set('acess', 1);
+            this.storage.set('access', data.email);
+            this.storage.set('access', 1);
           }
         }
       ]
