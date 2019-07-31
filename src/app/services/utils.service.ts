@@ -85,8 +85,12 @@ export class UtilsService {
     this.router.navigate(['tabs', 'photo-rec']);
   }
 
-  QuantifyComponent(img) {
-    this.currentImage = img;
+  QuantifyComponent() {
     this.router.navigate(['/photo-quant']);
+  }
+
+  PreviewComponent(img) {
+    this.currentImage = img;
+    this.router.navigate(['/preview']);
   }
 }

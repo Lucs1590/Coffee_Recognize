@@ -9,8 +9,6 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./preview.page.scss'],
 })
 export class PreviewPage implements OnInit {
-
-  @Input() currentImage;
   processedImage;
   processed: boolean;
 
@@ -24,11 +22,11 @@ export class PreviewPage implements OnInit {
   }
 
   close() {
-    this.utils.dismissModal();
+    this.utils.RecognitionComponent();
   }
 
   sendPhoto() {
-    this.apiService.sendOnePhoto(this.currentImage).subscribe(data => {
+    this.apiService.sendOnePhoto(this.utils.currentImage).subscribe(data => {
       this.utils.presentLoading();
       this.processedImage = data;
       this.processed = false;
@@ -41,6 +39,6 @@ export class PreviewPage implements OnInit {
 
   quantifyComponent() {
     this.close();
-    this.utils.QuantifyComponent(this.currentImage);
+    this.utils.QuantifyComponent();
   }
 }

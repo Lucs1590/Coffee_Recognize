@@ -22,7 +22,7 @@ export class PhotoRecognize implements OnInit {
   }
 
   open(photo) {
-    this.utils.presentModal(photo);
+    this.utils.PreviewComponent(photo);
   }
 
   clearPhotos() {
