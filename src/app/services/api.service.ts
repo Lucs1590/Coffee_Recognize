@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'http://66e1bdf4.ngrok.io';
+  public API_URL = 'http://87c0d53b.ngrok.io';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage: Storage) { }
 
   getHeader() {
     const usuario = JSON.parse(localStorage.getItem('currentUser'));
@@ -21,11 +22,15 @@ export class ApiService {
   }
 
   public sendOnePhoto(photo: any) {
-    return this.http.post(`${this.API_URL}/picture/process`, photo);
+    const body = { file: photo, email: this.storage.getItem('access') };
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
+    return data;
   }
 
   public sendLoteOfPhotos(photos: Photo[]) {
-    return this.http.post(`${this.API_URL}/picture/process`, photos);
+    const body = { file: photos, email: this.storage.getItem('access') };
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
+    return data;
   }
 
   public send_calcOnePhoto(photo: any, mensure: number) {
