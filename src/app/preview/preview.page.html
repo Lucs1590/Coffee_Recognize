@@ -10,7 +10,7 @@
 
 <ion-content>
   <img [src]="processedImage" *ngIf="processed" />
-  <img [src]="currentImage" *ngIf="!processed" />
+  <img [src]="utils.currentImage" *ngIf="!processed" />
 
 
   <ion-fab horizontal="end" vertical="top" slot="fixed">
