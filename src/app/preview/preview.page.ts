@@ -37,6 +37,7 @@ export class PreviewPage implements OnInit, OnDestroy {
   sendPhoto() {
     this.apiService.sendOnePhoto(this.utils.currentImage).subscribe(data => {
       this.utils.presentLoading();
+      console.log(`Preview Data: ${data}`);
       this.processedImage = data;
       this.processed = false;
       this.utils.presentToast('Processing performed successfully. 🎉');
