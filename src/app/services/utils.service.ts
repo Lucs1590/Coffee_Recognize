@@ -51,36 +51,6 @@ export class UtilsService {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  async presentAlertPrompt() {
-    const alert = await this.alertController.create({
-      header: 'Measure!',
-      inputs: [
-        {
-          name: 'measure',
-          type: 'text',
-          placeholder: '5cm'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'OK',
-          handler: () => {
-            console.log('Confirm Ok');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
   RecognitionComponent() {
     this.router.navigate(['tabs', 'photo-rec']);
   }
