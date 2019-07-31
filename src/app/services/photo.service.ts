@@ -9,11 +9,16 @@ export class PhotoService {
 
   public photos: Photo[] = [];
 
-  constructor(private camera: Camera, private storage: Storage) { }
+  constructor(
+    private camera: Camera,
+    private storage: Storage
+  ) { }
 
   takePicture() {
     const options: CameraOptions = {
       quality: 100,
+      targetHeight: 700,
+      targetWidth: 400,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -21,6 +26,7 @@ export class PhotoService {
     };
 
     this.camera.getPicture(options).then((imageData) => {
+      console.log(`IMG Data: ${imageData}`);
       // Add new photo to gallery
       this.photos.unshift({
         data: 'data:image/jpeg;base64,' + imageData
