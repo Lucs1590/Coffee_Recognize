@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhotoQuantify } from './photo-quant.page';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { IonicStorageModule } from '@ionic/storage';
 
 describe('PhotoQuantify', () => {
   let component: PhotoQuantify;
@@ -12,7 +14,11 @@ describe('PhotoQuantify', () => {
     TestBed.configureTestingModule({
       declarations: [PhotoQuantify],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RouterTestingModule]
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        IonicStorageModule.forRoot(),
+      ]
     }).compileComponents();
   }));
 

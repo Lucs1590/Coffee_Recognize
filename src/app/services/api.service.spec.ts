@@ -2,11 +2,15 @@ import { TestBed } from '@angular/core/testing';
 
 import { ApiService } from './api.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 describe('ApiService', () => {
   let service: ApiService;
 
   beforeEach(() => TestBed.configureTestingModule({
+    imports: [
+      IonicStorageModule.forRoot()
+    ],
     providers: [HttpClient, HttpHandler]
   }));
 
@@ -18,8 +22,8 @@ describe('ApiService', () => {
   describe('Testing Defined Values', () => {
 
     it('API_URL should be equal in front', () => {
-      const url = 'http://localhost:3000';
-      expect(url).toEqual(service.API_URL);
+      const url = 'http://';
+      expect(service.API_URL).toMatch(url);
     });
 
     it('getHeader should return object type', () => {

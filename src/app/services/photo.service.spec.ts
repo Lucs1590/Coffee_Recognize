@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { PhotoService } from './photo.service';
 import { Camera } from '@ionic-native/camera/ngx';
-import { Storage, IonicStorageModule } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { PhotoRecognize } from '../photo-rec/photo-rec.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
