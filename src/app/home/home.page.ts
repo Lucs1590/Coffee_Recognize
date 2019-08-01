@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { UtilsService } from '../services/utils.service';
-import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -15,7 +14,6 @@ export class Home implements OnInit {
   constructor(
     private socialSharing: SocialSharing,
     public utils: UtilsService,
-    public platform: Platform,
     public storage: Storage
   ) { }
 

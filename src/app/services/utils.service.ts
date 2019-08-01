@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController, ModalController, LoadingController, AlertController } from '@ionic/angular';
+import { ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { PreviewPage } from '../preview/preview.page';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,6 @@ export class UtilsService {
 
   constructor(
     public toastController: ToastController,
-    public modalController: ModalController,
     public router: Router,
     public loadingController: LoadingController,
     public alertController: AlertController
@@ -23,22 +22,6 @@ export class UtilsService {
       duration: 2000
     });
     toast.present();
-  }
-
-  async presentModal(currentImage) {
-    const modal = await this.modalController.create({
-      component: PreviewPage,
-      componentProps: {
-        'currentImage': currentImage
-      }
-    });
-    return await modal.present();
-  }
-
-  dismissModal() {
-    this.modalController.dismiss({
-      'dismissed': true
-    });
   }
 
   async presentLoading() {
