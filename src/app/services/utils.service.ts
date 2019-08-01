@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, AlertController } from '@ionic/angular';
-import { PreviewPage } from '../preview/preview.page';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,6 @@ export class UtilsService {
 
   constructor(
     public toastController: ToastController,
-    public router: Router,
     public loadingController: LoadingController,
     public alertController: AlertController
   ) { }
@@ -32,18 +29,5 @@ export class UtilsService {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-  }
-
-  RecognitionComponent() {
-    this.router.navigate(['tabs', 'photo-rec']);
-  }
-
-  QuantifyComponent() {
-    this.router.navigate(['/photo-quant']);
-  }
-
-  PreviewComponent(img) {
-    this.currentImage = img;
-    this.router.navigate(['/preview']);
   }
 }

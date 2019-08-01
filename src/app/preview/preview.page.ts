@@ -3,6 +3,7 @@ import { UtilsService } from '../services/utils.service';
 import { NavParams } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { NavigationsService } from '../services/navigations.service';
 
 @Component({
   selector: 'app-preview',
@@ -16,6 +17,7 @@ export class PreviewPage implements OnInit, OnDestroy {
 
   constructor(
     public utils: UtilsService,
+    public navigation: NavigationsService,
     public apiService: ApiService
   ) { }
 
@@ -31,7 +33,7 @@ export class PreviewPage implements OnInit, OnDestroy {
   }
 
   close() {
-    this.utils.RecognitionComponent();
+    this.navigation.RecognitionComponent();
   }
 
   sendPhoto() {

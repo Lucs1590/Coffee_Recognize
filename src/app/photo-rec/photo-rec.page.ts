@@ -3,6 +3,7 @@ import { PhotoService } from '../services/photo.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { UtilsService } from '../services/utils.service';
+import { NavigationsService } from '../services/navigations.service';
 
 @Component({
   selector: 'app-photo-rec',
@@ -14,7 +15,8 @@ export class PhotoRecognize implements OnInit {
     public photoService: PhotoService,
     public router: Router,
     public apiService: ApiService,
-    public utils: UtilsService
+    public utils: UtilsService,
+    public navigation: NavigationsService
   ) { }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class PhotoRecognize implements OnInit {
   }
 
   open(photo) {
-    this.utils.PreviewComponent(photo);
+    this.navigation.PreviewComponent(photo);
   }
 
   clearPhotos() {

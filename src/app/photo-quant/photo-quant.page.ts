@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { NavigationsService } from '../services/navigations.service';
 
 @Component({
   selector: 'app-photo-quant',
@@ -15,6 +16,7 @@ export class PhotoQuantify implements OnInit, OnDestroy {
 
   constructor(
     public utils: UtilsService,
+    public navigation: NavigationsService,
     public apiService: ApiService
   ) { }
 
@@ -31,7 +33,7 @@ export class PhotoQuantify implements OnInit, OnDestroy {
   }
 
   close() {
-    this.utils.PreviewComponent(this.utils.currentImage);
+    this.navigation.PreviewComponent(this.utils.currentImage);
   }
 
   send_calcPhoto(mensure) {
@@ -62,12 +64,12 @@ export class PhotoQuantify implements OnInit, OnDestroy {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            this.utils.PreviewComponent(this.utils.currentImage);
+            this.navigation.PreviewComponent(this.utils.currentImage);
           }
         }, {
           text: 'OK',
           handler: (data) => {
-            this.send_calcPhoto(data.mensure)
+            this.send_calcPhoto(data.mensure);
           }
         }
       ]
