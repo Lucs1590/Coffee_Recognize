@@ -22,7 +22,7 @@ export class Home implements OnInit {
   img_url = 'https://raw.githubusercontent.com/Lucs1590/Coffee_Recognize/master/src/assets/imagens/leaf-recognition-share.jpg';
 
   ngOnInit() {
-    this.storage.get('acess').then(data => {
+    this.storage.get('access').then(data => {
       if (data !== 1) {
         this.presentAlertPrompt();
       }
