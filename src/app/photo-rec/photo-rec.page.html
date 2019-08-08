@@ -10,7 +10,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-6 *ngFor="let photo of photoService.photos">
-        <img [src]="photo.data" />
+        <img [src]="photo.data" (click)="open(photo.data)" />
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -27,15 +27,14 @@
     </ion-fab-button>
     <ion-fab-list side="bottom">
 
-      <ion-fab-button color="light">
-        <ion-icon name="apps"></ion-icon>
+      <ion-fab-button color="success" (click)="sendPhotos()" data-desc="Send galery">
+        <ion-icon name="send"></ion-icon>
       </ion-fab-button>
 
-      <ion-fab-button color="light" (click)="QuantifyComponent()">
-        <ion-icon name="calculator"></ion-icon>
+      <ion-fab-button color="danger" (click)="clearPhotos()" data-desc="Clear galery">
+        <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
-
-
     </ion-fab-list>
   </ion-fab>
+
 </ion-content>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { File } from '@ionic-native/file/ngx';
+import { UtilsService } from '../services/utils.service';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,22 @@ import { File } from '@ionic-native/file/ngx';
 })
 export class Home implements OnInit {
 
-  constructor(private socialSharing: SocialSharing, private file: File) { }
+  constructor(
+    private socialSharing: SocialSharing,
+    public utils: UtilsService,
+    public storage: Storage
+  ) { }
 
   text_share = 'I found a very cool app and I remembered you. Access the link and have a look.';
   download_url = 'http://bit.ly/Coffe-Recognize';
   img_url = 'https://raw.githubusercontent.com/Lucs1590/Coffee_Recognize/master/src/assets/imagens/leaf-recognition-share.jpg';
 
   ngOnInit() {
-
+    this.storage.get('access').then(data => {
+      if (data !== 1) {
+        this.presentAlertPrompt();
+      }
+    });
   }
 
   shareWhatsApp() {
@@ -41,4 +51,35 @@ export class Home implements OnInit {
       });
   }
 
+  async presentAlertPrompt() {
+    const alert = await this.utils.alertController.create({
+      header: 'Type your e-mail!',
+      inputs: [
+        {
+          name: 'email',
+          type: 'text',
+          placeholder: 'email@email.com'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            // navigator['app'].exitApp();
+            this.utils.presentToast('We will not be able to send you the photos! 🥺');
+          }
+        }, {
+          text: 'OK',
+          handler: (data) => {
+            this.storage.set('email', data.email);
+            this.storage.set('access', 1);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }

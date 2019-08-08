@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="arrow-back" (click)="navigation.RecognitionComponent()" size="large" class="ion-float-left">
+    </ion-icon>
+    <ion-title style="height:2rem;">
+      Preview
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="processedImage" *ngIf="processed" />
+  <img [src]="utils.currentImage" *ngIf="!processed" />
+
+
+  <ion-fab horizontal="end" vertical="top" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="more"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+
+      <ion-fab-button color="light" (click)="sendPhoto()" data-desc="Process image">
+        <ion-icon name="play-circle"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button color="light" (click)="quantifyComponent()" data-desc="Quantify image">
+        <ion-icon name="calculator"></ion-icon>
+      </ion-fab-button>
+
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="arrow-back" (click)="RecognitionComponent()" size="large" class="ion-float-left">
+    <ion-icon name="arrow-back" (click)="close()" size="large" class="ion-float-left">
     </ion-icon>
     <ion-title style="height:2rem;">
       Quantify
@@ -8,4 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <img [src]="processedImage" *ngIf="processed" />
+  <img [src]="utils.currentImage" *ngIf="!processed" />
+</ion-content>

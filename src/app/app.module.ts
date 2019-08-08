@@ -12,8 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { Provider } from '@angular/compiler/src/core';
+import { HttpClientModule } from '@angular/common/http';
+import { PreviewPageModule } from './preview/preview.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,14 +22,14 @@ import { Provider } from '@angular/compiler/src/core';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot()
+    PreviewPageModule,
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
-    HttpClient,
-    HttpHandler as Provider,
     File,
     SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
