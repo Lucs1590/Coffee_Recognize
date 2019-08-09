@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UtilsService } from '../services/utils.service';
-import { NavParams } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { NavigationsService } from '../services/navigations.service';
