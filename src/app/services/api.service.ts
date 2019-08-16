@@ -9,7 +9,8 @@ import { Storage } from '@ionic/storage';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'http://87c0d53b.ngrok.io';
+  public API_URL = 'https://auctus.serveo.net';
+  email: string;
 
   constructor(private http: HttpClient, private storage: Storage) { }
 
@@ -23,13 +24,17 @@ export class ApiService {
   }
 
   public sendOnePhoto(photo: any) {
-    const body = { file: photo, email: this.storage.get('access').then(value => value) };
+    this.storage.get('email').then(value => { this.email = value; });
+    const body = { file: photo, email: this.email };
+    console.log(body);
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
     return data;
   }
 
   public sendLoteOfPhotos(photos: Photo[]) {
-    const body = { file: photos, email: this.storage.get('access').then(value => value) };
+    this.storage.get('email').then(value => { this.email = value; });
+    const body = { file: photos, email: this.email };
+    console.log(body);
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
     return data;
   }
