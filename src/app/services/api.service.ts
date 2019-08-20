@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'https://auctus.serveo.net';
+  public API_URL = 'https://vultus.serveo.net';
   email: string;
 
   constructor(private http: HttpClient, private storage: Storage) { }
@@ -24,11 +24,15 @@ export class ApiService {
   }
 
   public sendOnePhoto(photo: any) {
-    this.storage.get('email').then(value => { this.email = value; });
-    const body = { file: photo, email: this.email };
-    console.log(body);
-    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
-    return data;
+    const fd = new FormData();
+
+    return this.storage.get('email').then(email_value => {
+      fd.append('file', this.b64toBlob(photo));
+      fd.append('email', email_value);
+
+      const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
+      return data;
+    });
   }
 
   public sendLoteOfPhotos(photos: Photo[]) {
@@ -42,6 +46,17 @@ export class ApiService {
   public send_calcOnePhoto(photo: any, mensure: number) {
     const body = { 'photo': photo, 'mensure': mensure };
     return this.http.post(`${this.API_URL}/picture/process`, body);
+  }
+
+  b64toBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: 'image/jpeg' });
   }
 }
 
