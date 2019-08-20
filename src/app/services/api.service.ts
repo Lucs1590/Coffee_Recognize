@@ -25,8 +25,7 @@ export class ApiService {
 
   public sendOnePhoto(photo: any) {
     const fd = new FormData();
-
-    return this.storage.get('email').then(email_value => {
+    this.storage.get('email').then(email_value => {
       fd.append('file', this.b64toBlob(photo));
       fd.append('email', email_value);
 
