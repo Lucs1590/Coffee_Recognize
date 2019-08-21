@@ -21,8 +21,8 @@ describe('ApiService', () => {
 
   describe('Testing Defined Values', () => {
 
-    it('API_URL should be equal in front', () => {
-      const url = 'http://';
+    it('API_URL should contain protocol https', () => {
+      const url = 'https://';
       expect(service.API_URL).toMatch(url);
     });
 

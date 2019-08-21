@@ -9,7 +9,8 @@ import { Storage } from '@ionic/storage';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'http://87c0d53b.ngrok.io';
+  public API_URL = 'https://adopto.serveo.net';
+  email: string;
 
   constructor(private http: HttpClient, private storage: Storage) { }
 
@@ -22,14 +23,19 @@ export class ApiService {
     };
   }
 
-  public sendOnePhoto(photo: any) {
-    const body = { file: photo, email: this.storage.get('access').then(value => value) };
-    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
-    return data;
+  public async sendOnePhoto(photo: any) {
+    const fd = new FormData();
+    const email_value = await this.storage.get('email');
+    fd.append('file', this.blobToFile(this.b64toBlob(photo)));
+    fd.append('email', email_value);
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
+    return data.toPromise();
   }
 
   public sendLoteOfPhotos(photos: Photo[]) {
-    const body = { file: photos, email: this.storage.get('access').then(value => value) };
+    this.storage.get('email').then(value => { this.email = value; });
+    const body = { file: photos, email: this.email };
+    console.log(body);
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
     return data;
   }
@@ -37,6 +43,24 @@ export class ApiService {
   public send_calcOnePhoto(photo: any, mensure: number) {
     const body = { 'photo': photo, 'mensure': mensure };
     return this.http.post(`${this.API_URL}/picture/process`, body);
+  }
+
+  b64toBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: 'image/jpeg' });
+  }
+
+  public blobToFile = (theBlob: Blob): File => {
+    const b: any = theBlob;
+    b.lastModifiedDate = new Date();
+    b.name = String(Date.now());
+    return <File>theBlob;
   }
 }
 

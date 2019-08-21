@@ -54,32 +54,17 @@ export class Home implements OnInit {
   async presentAlertPrompt() {
     const alert = await this.utils.alertController.create({
       header: 'Type your e-mail!',
-      inputs: [
-        {
-          name: 'email',
-          type: 'text',
-          placeholder: 'email@email.com'
-        }
-      ],
+      inputs: [{ name: 'email', type: 'text', placeholder: 'email@email.com' }],
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            // navigator['app'].exitApp();
-            this.utils.presentToast('We will not be able to send you the photos! 🥺');
-          }
-        }, {
-          text: 'OK',
-          handler: (data) => {
-            this.storage.set('email', data.email);
-            this.storage.set('access', 1);
-          }
+          text: 'Cancel', role: 'cancel', cssClass: 'secondary',
+          handler: () => { this.utils.presentToast('We will not be able to send you the photos! 🥺'); }
+        },
+        {
+          text: 'OK', handler: (data) => { this.storage.set('email', data.email); this.storage.set('access', 1); }
         }
       ]
     });
-
     await alert.present();
   }
 }

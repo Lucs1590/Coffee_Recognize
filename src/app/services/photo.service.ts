@@ -26,7 +26,6 @@ export class PhotoService {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      console.log(`IMG Data: ${imageData}`);
       // Add new photo to gallery
       this.photos.unshift({
         data: 'data:image/jpeg;base64,' + imageData

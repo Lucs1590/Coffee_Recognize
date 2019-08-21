@@ -51,30 +51,13 @@ export class PhotoQuantify implements OnInit, OnDestroy {
   async presentAlertPrompt() {
     const alert = await this.utils.alertController.create({
       header: 'Enter leaf width!',
-      inputs: [
-        {
-          name: 'measure',
-          type: 'text',
-          placeholder: '5cm'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            this.navigation.PreviewComponent(this.utils.currentImage);
-          }
-        }, {
-          text: 'OK',
-          handler: (data) => {
-            this.send_calcPhoto(data.mensure);
-          }
-        }
-      ]
+      inputs: [{ name: 'measure', type: 'text', placeholder: '5cm' }],
+      buttons: [{
+        text: 'Cancel', role: 'cancel', cssClass: 'secondary',
+        handler: () => { this.navigation.PreviewComponent(this.utils.currentImage); }
+      },
+      { text: 'OK', handler: (data) => { this.send_calcPhoto(data.mensure); } }]
     });
-
     await alert.present();
   }
 }
