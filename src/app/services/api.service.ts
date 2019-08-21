@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'https://vultus.serveo.net';
+  public API_URL = 'https://adopto.serveo.net';
   email: string;
 
   constructor(private http: HttpClient, private storage: Storage) { }
@@ -23,15 +23,13 @@ export class ApiService {
     };
   }
 
-  public sendOnePhoto(photo: any) {
+  public async sendOnePhoto(photo: any) {
     const fd = new FormData();
-    this.storage.get('email').then(email_value => {
-      fd.append('file', this.b64toBlob(photo));
-      fd.append('email', email_value);
-
-      const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
-      return data;
-    });
+    const email_value = await this.storage.get('email');
+    fd.append('file', this.blobToFile(this.b64toBlob(photo)));
+    fd.append('email', email_value);
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
+    return data.toPromise();
   }
 
   public sendLoteOfPhotos(photos: Photo[]) {
@@ -56,6 +54,13 @@ export class ApiService {
       ia[i] = byteString.charCodeAt(i);
     }
     return new Blob([ab], { type: 'image/jpeg' });
+  }
+
+  public blobToFile = (theBlob: Blob): File => {
+    const b: any = theBlob;
+    b.lastModifiedDate = new Date();
+    b.name = String(Date.now());
+    return <File>theBlob;
   }
 }
 
