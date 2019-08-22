@@ -32,15 +32,15 @@ export class PhotoRecognize implements OnInit {
   }
 
   sendPhotos() {
-    this.apiService.sendLoteOfPhotos(this.photoService.photos).subscribe(data => {
-      console.log(data);
-      this.clearPhotos();
-      this.utils.presentToast('Processing performed successfully. We will send you an email. 🎉');
-    }, err => {
-      console.log(err);
-      this.utils.presentToast('We had an error uploading, please try again! 🥺');
+    this.photoService.photos.forEach(photo => {
+      this.apiService.sendLoteOfPhotos(this.utils.blobToFile(this.utils.b64toBlob(photo))).then(data => {
+        console.log(data);
+        this.utils.presentToast('Processing performed successfully. We will send you an email. 🎉');
+      }, err => {
+        console.log(err);
+        this.utils.presentToast('We had an error uploading, please try again! 🥺');
+      });
     });
+    this.clearPhotos();
   }
-
-
 }
