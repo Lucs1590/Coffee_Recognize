@@ -32,10 +32,10 @@ export class ApiService {
     return data.toPromise();
   }
 
-  public async sendLoteOfPhotos(photos) {
+  public async sendLoteOfPhotos(photo: string | Blob | File) {
     const fd = new FormData();
     const email_value = await this.storage.get('email');
-    fd.append('file', photos);
+    fd.append('file', photo);
     fd.append('email', email_value);
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
     return data.toPromise();
