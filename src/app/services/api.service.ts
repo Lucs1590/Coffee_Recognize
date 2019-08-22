@@ -26,18 +26,19 @@ export class ApiService {
   public async sendOnePhoto(photo: any) {
     const fd = new FormData();
     const email_value = await this.storage.get('email');
-    fd.append('file', this.blobToFile(this.b64toBlob(photo)));
+    fd.append('file', photo);
     fd.append('email', email_value);
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
     return data.toPromise();
   }
 
-  public sendLoteOfPhotos(photos: Photo[]) {
-    this.storage.get('email').then(value => { this.email = value; });
-    const body = { file: photos, email: this.email };
-    console.log(body);
-    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
-    return data;
+  public async sendLoteOfPhotos(photos) {
+    const fd = new FormData();
+    const email_value = await this.storage.get('email');
+    fd.append('file', photos);
+    fd.append('email', email_value);
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
+    return data.toPromise();
   }
 
   public send_calcOnePhoto(photo: any, mensure: number) {
