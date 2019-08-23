@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'https://adopto.serveo.net';
+  public API_URL = 'https://trepide.serveo.net';
   email: string;
 
   constructor(private http: HttpClient, private storage: Storage) { }
