@@ -31,7 +31,7 @@ export class UtilsService {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  b64toBlob(dataURI) {
+  b64toBlob(dataURI: { split: (arg0: string) => string[]; }) {
     const byteString = atob(dataURI.split(',')[1]);
     const ab = new ArrayBuffer(byteString.length);
     const ia = new Uint8Array(ab);
@@ -41,7 +41,7 @@ export class UtilsService {
     return new Blob([ab], { type: 'image/jpeg' });
   }
 
-  public blobToFile = (theBlob: Blob): File => {
+  blobToFile = (theBlob: Blob): File => {
     const b: any = theBlob;
     b.lastModifiedDate = new Date();
     b.name = String(Date.now());
