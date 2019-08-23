@@ -23,7 +23,7 @@ export class ApiService {
     };
   }
 
-  public async sendOnePhoto(photo: any) {
+  public async sendOnePhoto(photo: string | Blob | File) {
     const fd = new FormData();
     const email_value = await this.storage.get('email');
     fd.append('file', photo);
@@ -37,7 +37,7 @@ export class ApiService {
     const email_value = await this.storage.get('email');
     fd.append('file', photo);
     fd.append('email', email_value);
-    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload-gallery`, fd);
     return data.toPromise();
   }
 
@@ -46,7 +46,11 @@ export class ApiService {
     return this.http.post(`${this.API_URL}/picture/process`, body);
   }
 
-  b64toBlob(dataURI) {
+  public processCommand() {
+    return this.http.get(`${this.API_URL}/picture/process-and-send-email`);
+  }
+
+  b64toBlob(dataURI: { split: (arg0: string) => string[]; }) {
     const byteString = atob(dataURI.split(',')[1]);
     const ab = new ArrayBuffer(byteString.length);
     const ia = new Uint8Array(ab);
