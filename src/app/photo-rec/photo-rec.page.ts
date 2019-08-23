@@ -33,14 +33,14 @@ export class PhotoRecognize implements OnInit {
 
   sendPhotos() {
     this.photoService.photos.forEach(photo => {
-      this.apiService.sendLoteOfPhotos(this.utils.blobToFile(this.utils.b64toBlob(photo))).then(data => {
-        console.log(data);
-        this.utils.presentToast('Processing performed successfully. We will send you an email. 🎉');
-      }, err => {
-        console.log(err);
-        this.utils.presentToast('We had an error uploading, please try again! 🥺');
-      });
+      this.apiService.sendLoteOfPhotos(this.utils.blobToFile(this.utils.b64toBlob(photo))).then(data => { console.log(data); },
+        (err: any) => { console.log(err); });
     });
-    this.clearPhotos();
+    this.apiService.processCommand().subscribe(() => {
+      this.utils.presentToast('Processing performed successfully. We will send you an email. 🎉');
+      this.clearPhotos();
+    }, (err: any) => {
+      this.utils.presentToast('We had an error uploading, please try again! 🥺');
+    });
   }
 }
