@@ -19,7 +19,7 @@ describe('UtilsService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('Testing defined values and returns', () => {
+  describe('Testing defined values, types and returns', () => {
 
     it('b64toBlob should return Blob()', () => {
       expect(service.b64toBlob(base64)).toEqual(new Blob());
