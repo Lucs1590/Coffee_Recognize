@@ -49,24 +49,6 @@ export class ApiService {
   public processCommand() {
     return this.http.get(`${this.API_URL}/picture/process-and-send-email`);
   }
-
-  b64toBlob(dataURI: { split: (arg0: string) => string[]; }) {
-    const byteString = atob(dataURI.split(',')[1]);
-    const ab = new ArrayBuffer(byteString.length);
-    const ia = new Uint8Array(ab);
-
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: 'image/jpeg' });
-  }
-
-  public blobToFile = (theBlob: Blob): File => {
-    const b: any = theBlob;
-    b.lastModifiedDate = new Date();
-    b.name = String(Date.now());
-    return <File>theBlob;
-  }
 }
 
 class Photo {
