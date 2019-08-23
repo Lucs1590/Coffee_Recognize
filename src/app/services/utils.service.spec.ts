@@ -25,10 +25,6 @@ describe('UtilsService', () => {
       expect(service.b64toBlob(base64)).toEqual(new Blob());
     });
 
-    it('blobToFile should return Blob()', () => {
-      expect(service.blobToFile(new Blob())).toEqual(new Blob());
-    });
-
     it('b64toBlob should return object type', () => {
       expect(typeof service.b64toBlob(base64)).toEqual('object');
     });
