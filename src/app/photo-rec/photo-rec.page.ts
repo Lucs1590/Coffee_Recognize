@@ -33,7 +33,7 @@ export class PhotoRecognize implements OnInit {
 
   sendPhotos() {
     this.photoService.photos.forEach(photo => {
-      this.apiService.sendLoteOfPhotos(this.utils.blobToFile(this.utils.b64toBlob(photo))).then(data => { console.log(data); },
+      this.apiService.sendLoteOfPhotos(this.utils.blobToFile(this.utils.b64toBlob(photo.data))).then(data => { console.log(data); },
         (err: any) => { console.log(err); });
     });
     this.apiService.processCommand().subscribe(() => {
