@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
-
+import { TestBed, async } from '@angular/core/testing';
 import { ApiService } from './api.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+
 
 describe('ApiService', () => {
   let service: ApiService;
@@ -19,7 +19,7 @@ describe('ApiService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('Testing Defined Values', () => {
+  describe('Testing defined values, types and returns', () => {
 
     it('API_URL should contain protocol https', () => {
       const url = 'https://';
@@ -28,6 +28,10 @@ describe('ApiService', () => {
 
     it('getHeader should return object type', () => {
       expect(typeof service.getHeader()).toEqual('object');
+    });
+
+    it('processCommand() should return object type', async () => {
+      expect(typeof service.processCommand()).toEqual('object');
     });
 
   });

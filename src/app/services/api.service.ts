@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 export class ApiService {
 
   // public API_URL = 'http://localhost:3000';
-  public API_URL = 'https://adopto.serveo.net';
+  public API_URL = 'https://trepide.serveo.net';
   email: string;
 
   constructor(private http: HttpClient, private storage: Storage) { }
@@ -23,21 +23,22 @@ export class ApiService {
     };
   }
 
-  public async sendOnePhoto(photo: any) {
+  public async sendOnePhoto(photo: string | Blob | File) {
     const fd = new FormData();
     const email_value = await this.storage.get('email');
-    fd.append('file', this.blobToFile(this.b64toBlob(photo)));
+    fd.append('file', photo);
     fd.append('email', email_value);
     const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, fd);
     return data.toPromise();
   }
 
-  public sendLoteOfPhotos(photos: Photo[]) {
-    this.storage.get('email').then(value => { this.email = value; });
-    const body = { file: photos, email: this.email };
-    console.log(body);
-    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload`, body);
-    return data;
+  public async sendLoteOfPhotos(photo: string | Blob | File) {
+    const fd = new FormData();
+    const email_value = await this.storage.get('email');
+    fd.append('file', photo);
+    fd.append('email', email_value);
+    const data: Observable<any> = this.http.post(`${this.API_URL}/picture/upload-gallery`, fd);
+    return data.toPromise();
   }
 
   public send_calcOnePhoto(photo: any, mensure: number) {
@@ -45,22 +46,8 @@ export class ApiService {
     return this.http.post(`${this.API_URL}/picture/process`, body);
   }
 
-  b64toBlob(dataURI) {
-    const byteString = atob(dataURI.split(',')[1]);
-    const ab = new ArrayBuffer(byteString.length);
-    const ia = new Uint8Array(ab);
-
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: 'image/jpeg' });
-  }
-
-  public blobToFile = (theBlob: Blob): File => {
-    const b: any = theBlob;
-    b.lastModifiedDate = new Date();
-    b.name = String(Date.now());
-    return <File>theBlob;
+  public processCommand() {
+    return this.http.get(`${this.API_URL}/picture/process-and-send-email`);
   }
 }
 
