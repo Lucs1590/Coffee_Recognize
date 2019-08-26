@@ -18,7 +18,7 @@ export class Home implements OnInit {
   ) { }
 
   text_share = 'I found a very cool app and I remembered you. Access the link and have a look.';
-  download_url = 'http://bit.ly/Coffe-Recognize';
+  download_url = 'http://bit.ly/Coffee-Recognize';
   img_url = 'https://raw.githubusercontent.com/Lucs1590/Coffee_Recognize/master/src/assets/imagens/leaf-recognition-share.jpg';
 
   ngOnInit() {
