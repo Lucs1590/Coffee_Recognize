@@ -9,8 +9,8 @@
 </ion-header>
 
 <ion-content>
-  <img [src]="processedImage" *ngIf="processed" />
-  <img [src]="utils.currentImage" *ngIf="!processed" />
+  <img [src]="utils.processedImage" *ngIf="utils.processed" />
+  <img [src]="utils.currentImage" *ngIf="!utils.processed" />
 
 
   <ion-fab horizontal="end" vertical="top" slot="fixed">
