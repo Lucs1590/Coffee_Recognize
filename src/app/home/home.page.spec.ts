@@ -41,7 +41,7 @@ describe('HomeComponent', () => {
     });
 
     it('download_url should be equal in front', () => {
-      const url = 'http://bit.ly/Coffe-Recognize';
+      const url = 'http://bit.ly/Coffee-Recognize';
       expect(url).toEqual(component.download_url);
     });
 
