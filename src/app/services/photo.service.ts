@@ -17,8 +17,6 @@ export class PhotoService {
   takePicture() {
     const options: CameraOptions = {
       quality: 100,
-      targetHeight: 700,
-      targetWidth: 400,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
