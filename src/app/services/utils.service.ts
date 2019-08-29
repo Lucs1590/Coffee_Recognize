@@ -6,6 +6,8 @@ import { ToastController, LoadingController, AlertController } from '@ionic/angu
 })
 export class UtilsService {
   currentImage: any;
+  processedImage: any;
+  processed: boolean;
 
   constructor(
     public toastController: ToastController,
@@ -46,5 +48,11 @@ export class UtilsService {
     b.lastModifiedDate = new Date();
     b.name = String(Date.now());
     return <File>theBlob;
+  }
+
+  clearPreviewEnv() {
+    this.currentImage = null;
+    this.processedImage = null;
+    this.processed = false;
   }
 }

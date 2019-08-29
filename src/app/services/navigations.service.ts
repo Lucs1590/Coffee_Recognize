@@ -13,6 +13,7 @@ export class NavigationsService {
     ) { }
 
   RecognitionComponent() {
+    this.utils.clearPreviewEnv();
     this.router.navigate(['tabs', 'photo-rec']);
   }
 

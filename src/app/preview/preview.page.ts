@@ -10,8 +10,6 @@ import { NavigationsService } from '../services/navigations.service';
   styleUrls: ['./preview.page.scss'],
 })
 export class PreviewPage implements OnInit, OnDestroy {
-  processedImage;
-  processed: boolean;
   subscription: Subscription;
 
   constructor(
@@ -24,7 +22,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     if (!this.subscription) {
       this.subscription = new Subscription();
     }
-    this.processed = false;
+    this.utils.processed = false;
   }
 
   ngOnDestroy(): void {
@@ -39,9 +37,8 @@ export class PreviewPage implements OnInit, OnDestroy {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
     this.apiService.sendOnePhoto(photo).then(data => {
       this.utils.presentLoading();
-      console.log(`Preview Data: ${data}`);
-      this.processedImage = data;
-      this.processed = false;
+      this.utils.processedImage = this.apiService.API_URL + '/resultados/' + data.imagens[0];
+      this.utils.processed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {
       console.log(err);
