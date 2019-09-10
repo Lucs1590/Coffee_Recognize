@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Storage } from '@ionic/storage';
-
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,8 @@ export class PhotoService {
 
   constructor(
     private camera: Camera,
-    private storage: Storage
+    private storage: Storage,
+    private cameraPreview: CameraPreview
   ) { }
 
   takePicture() {
@@ -42,6 +43,27 @@ export class PhotoService {
     this.storage.get('photos').then((photos) => {
       this.photos = photos || [];
     });
+  }
+
+  takePicWithPreview() {
+    const cameraPreviewOpts: CameraPreviewOptions = {
+      x: 0,
+      y: 0,
+      width: window.screen.width,
+      height: window.screen.height,
+      camera: 'rear',
+      tapPhoto: true,
+      previewDrag: true,
+      toBack: true,
+      alpha: 1
+    };
+    this.cameraPreview.startCamera(cameraPreviewOpts).then(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
 }
