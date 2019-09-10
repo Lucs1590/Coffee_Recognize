@@ -62,7 +62,7 @@ export class Home implements OnInit {
         },
         {
           text: 'OK', handler: (data) => {
-            if (data !== null) {
+            if (data.email !== '' && data.email.match('@')) {
               this.storage.set('email', data.email); this.storage.set('access', 1);
             } else { this.presentAlertPrompt(); }
           }
