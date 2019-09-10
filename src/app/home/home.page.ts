@@ -61,7 +61,11 @@ export class Home implements OnInit {
           handler: () => { this.utils.presentToast('We will not be able to send you the photos! 🥺'); }
         },
         {
-          text: 'OK', handler: (data) => { this.storage.set('email', data.email); this.storage.set('access', 1); }
+          text: 'OK', handler: (data) => {
+            if (data !== null) {
+              this.storage.set('email', data.email); this.storage.set('access', 1);
+            } else { this.presentAlertPrompt(); }
+          }
         }
       ]
     });
