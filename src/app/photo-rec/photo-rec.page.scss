@@ -1,0 +1,39 @@
+$r: 3em;
+
+.box {
+    overflow: hidden;
+    position: relative;
+    max-width: 80em;
+    min-height: 50em;
+    
+    &:before {
+        left: 25%;
+        top: 15%; // distancia em relação ao topo
+        width: 50%;
+        height: 50%; // altura do quadrado
+        position: absolute;
+        margin: -$r;
+        padding: $r;
+        box-shadow: 0 0 0 300px rgba(rgb(17, 17, 17), .80);
+        content: '';
+    }
+}
+
+// Linha horizontal vermelha
+.vl { 
+    border-left: 1px solid #d30000;
+    top: 10%;
+    height: 60%;
+    position: absolute;
+    left: 50%;  
+}
+
+.retangulo {
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    border: 4px solid rgb(255, 255, 255);
+    border-style: dashed;
+    position: absolute;
+}

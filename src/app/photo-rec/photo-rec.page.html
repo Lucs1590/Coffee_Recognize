@@ -1,9 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>photo-rec</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+  <div *ngIf="picture">
+
+    <img [src]="picture">
+
+    <ion-fab bottom center>
+      <button ion-fab (click)="startCamera()">
+        <ion-icon name="arrow-dropleft"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
+
+  <div *ngIf="!picture" class="base">
+
+    <div class='box'>
+      <div class="vl"></div>
+      <div class="retangulo"></div>
+    </div>
+
+    <ion-fab bottom center>
+      <button ion-fab (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
 
 </ion-content>

@@ -11,8 +11,7 @@ export class PhotoService {
 
   constructor(
     private camera: Camera,
-    private storage: Storage,
-    // private cameraPreview: CameraPreview
+    private storage: Storage
   ) { }
 
   takePicture() {
@@ -43,27 +42,6 @@ export class PhotoService {
     this.storage.get('photos').then((photos) => {
       this.photos = photos || [];
     });
-  }
-
-  takePicWithPreview() {
-    const cameraPreviewOpts: CameraPreviewOptions = {
-      x: 0,
-      y: 0,
-      width: window.screen.width,
-      height: window.screen.height,
-      camera: 'rear',
-      tapPhoto: true,
-      previewDrag: true,
-      toBack: true,
-      alpha: 1
-    };
-/*     this.cameraPreview.startCamera(cameraPreviewOpts).then(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }); */
   }
 
 }
