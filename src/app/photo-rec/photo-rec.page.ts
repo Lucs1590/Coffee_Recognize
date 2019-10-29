@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CameraPreviewOptions, CameraPreviewPictureOptions, CameraPreview } from '@ionic-native/camera-preview';
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions } from '@ionic-native/camera-preview/ngx';
 
 @Component({
   selector: 'app-photo-rec',

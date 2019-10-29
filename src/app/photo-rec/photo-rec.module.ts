@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PhotoRecPage } from './photo-rec.page';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  providers: [CameraPreview],
   declarations: [PhotoRecPage]
 })
-export class PhotoRecPageModule {}
+export class PhotoRecPageModule { }
