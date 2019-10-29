@@ -12,7 +12,7 @@ export class PhotoService {
   constructor(
     private camera: Camera,
     private storage: Storage,
-    private cameraPreview: CameraPreview
+    // private cameraPreview: CameraPreview
   ) { }
 
   takePicture() {
@@ -57,13 +57,13 @@ export class PhotoService {
       toBack: true,
       alpha: 1
     };
-    this.cameraPreview.startCamera(cameraPreviewOpts).then(
+/*     this.cameraPreview.startCamera(cameraPreviewOpts).then(
       (res) => {
         console.log(res);
       },
       (err) => {
         console.log(err);
-      });
+      }); */
   }
 
 }
