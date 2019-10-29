@@ -30,15 +30,20 @@ export class PhotoRecPage implements OnInit {
     this.startCamera();
   }
 
-  async startCamera() {
+  startCamera() {
     this.picture = null;
-    const result = await this.cameraPreview.startCamera(this.cameraOpts);
-    console.log(result);
+    this.cameraPreview.startCamera(this.cameraOpts).then(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
-  async takePicture() {
-    const result = await this.cameraPreview.takePicture(this.cameraPictureOpts);
-    await this.cameraPreview.stopCamera();
-    this.picture = `data:image/jpeg;base64,${result}`;
+  takePicture() {
+    this.cameraPreview.takePicture(this.cameraPictureOpts).then((imageData) => {
+      this.picture = 'data:image/jpeg;base64,' + imageData;
+    });
   }
 }

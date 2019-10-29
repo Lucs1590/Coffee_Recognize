@@ -1,28 +1,13 @@
 <ion-content>
 
-  <div *ngIf="picture">
+  <div id="ionball"></div>
 
-    <img [src]="picture">
+  <ion-fab left top small>
+      <button (click)="" ion-fab color="light"><ion-icon name="exit"></ion-icon></button>
+  </ion-fab>
 
-    <ion-fab bottom center>
-      <button ion-fab (click)="startCamera()">
-        <ion-icon name="arrow-dropleft"></ion-icon>
-      </button>
-    </ion-fab>
-  </div>
-
-  <div *ngIf="!picture" class="base">
-
-    <div class='box'>
-      <div class="vl"></div>
-      <div class="retangulo"></div>
-    </div>
-
-    <ion-fab bottom center>
-      <button ion-fab (click)="takePicture()">
-        <ion-icon name="camera"></ion-icon>
-      </button>
-    </ion-fab>
-  </div>
+  <ion-fab right bottom small>
+      <button (click)="takePicture()" ion-fab color="light"><ion-icon name="archive"></ion-icon></button>
+  </ion-fab>
 
 </ion-content>
