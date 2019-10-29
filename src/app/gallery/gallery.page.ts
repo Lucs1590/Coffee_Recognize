@@ -6,11 +6,11 @@ import { UtilsService } from '../services/utils.service';
 import { NavigationsService } from '../services/navigations.service';
 
 @Component({
-  selector: 'app-photo-rec',
-  templateUrl: 'photo-rec.page.html',
-  styleUrls: ['photo-rec.page.scss']
+  selector: 'app-gallery',
+  templateUrl: 'gallery.page.html',
+  styleUrls: ['gallery.page.scss']
 })
-export class PhotoRecognize implements OnInit {
+export class GalleryPage implements OnInit {
   constructor(
     public photoService: PhotoService,
     public router: Router,

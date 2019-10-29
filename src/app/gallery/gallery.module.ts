@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PhotoRecognize } from './photo-rec.page';
+import { GalleryPage } from './gallery.page';
 import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
@@ -11,9 +11,9 @@ import { Camera } from '@ionic-native/camera/ngx';
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: PhotoRecognize }]),
+    RouterModule.forChild([{ path: '', component: GalleryPage }]),
   ],
   providers: [Camera],
-  declarations: [PhotoRecognize]
+  declarations: [GalleryPage]
 })
-export class PhotoRecognizePageModule { }
+export class GalleryPageModule { }
