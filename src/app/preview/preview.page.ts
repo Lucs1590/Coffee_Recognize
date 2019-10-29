@@ -30,7 +30,7 @@ export class PreviewPage implements OnInit, OnDestroy {
   }
 
   close() {
-    this.navigation.RecognitionComponent();
+    this.navigation.GalleryComponent();
   }
 
   sendPhoto() {
