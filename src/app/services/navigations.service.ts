@@ -10,9 +10,9 @@ export class NavigationsService {
   constructor(
     public utils: UtilsService,
     private router: Router
-    ) { }
+  ) { }
 
-  RecognitionComponent() {
+  GalleryComponent() {
     this.utils.clearPreviewEnv();
     this.router.navigate(['tabs', 'gallery']);
   }
@@ -25,4 +25,9 @@ export class NavigationsService {
     this.utils.currentImage = img;
     this.router.navigate(['/preview']);
   }
+
+  PhotoRecComponent() {
+    this.router.navigate(['/photo-rec']);
+  }
+
 }
