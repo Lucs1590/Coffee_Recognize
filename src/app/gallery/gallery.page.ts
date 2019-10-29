@@ -23,8 +23,12 @@ export class GalleryPage implements OnInit {
     this.photoService.loadSaved();
   }
 
-  open(photo) {
+  openPhoto(photo) {
     this.navigation.PreviewComponent(photo);
+  }
+
+  getPhoto() {
+    this.navigation.PhotoRecComponent();
   }
 
   clearPhotos() {
