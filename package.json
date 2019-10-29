@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~7.1.4",
     "@angular/router": "~7.1.4",
     "@ionic-native/camera": "^5.9.0",
-    "@ionic-native/camera-preview": "^4.20.0",
+    "@ionic-native/camera-preview": "^5.15.1",
     "@ionic-native/core": "5.0.0-beta.21",
     "@ionic-native/file": "^5.0.0",
     "@ionic-native/social-sharing": "^5.0.0",
