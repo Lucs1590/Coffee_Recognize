@@ -1,49 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions } from '@ionic-native/camera-preview/ngx';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-photo-rec',
   templateUrl: './photo-rec.page.html',
   styleUrls: ['./photo-rec.page.scss'],
 })
-export class PhotoRecPage implements OnInit {
+export class PhotoRecPage implements OnInit, OnDestroy {
 
-  constructor(private cameraPreview: CameraPreview) { }
-
-  picture: string;
-  cameraOpts: CameraPreviewOptions = {
-    x: 0,
-    y: 0,
-    camera: 'rear',
-    width: window.innerWidth,
-    height: window.innerHeight,
-    toBack: true
-  };
-
-  cameraPictureOpts: CameraPreviewPictureOptions = {
-    width: 720,
-    height: 1280,
-    quality: 100
-  };
+  constructor(
+    public photoService: PhotoService
+  ) { }
 
   ngOnInit() {
-    this.startCamera();
+    this.photoService.startCamera();
   }
 
-  startCamera() {
-    this.picture = null;
-    this.cameraPreview.startCamera(this.cameraOpts).then(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      });
+  ngOnDestroy() {
+    this.photoService.stopCamera();
   }
 
-  takePicture() {
-    this.cameraPreview.takePicture(this.cameraPictureOpts).then((imageData) => {
-      this.picture = 'data:image/jpeg;base64,' + imageData;
-    });
-  }
 }
