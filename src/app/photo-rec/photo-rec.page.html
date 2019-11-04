@@ -1,13 +1,9 @@
 <ion-content>
 
-  <div id="ionball"></div>
-
-  <ion-fab left top small>
-      <button ion-fab color="light"><ion-icon name="exit"></ion-icon></button>
+  <div id="imagem_apoio"></div>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
-
-  <ion-fab right bottom small>
-      <button (click)="takePicture()" ion-fab color="light"><ion-icon name="archive"></ion-icon></button>
-  </ion-fab>
-
 </ion-content>

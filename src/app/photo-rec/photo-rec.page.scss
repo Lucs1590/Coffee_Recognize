@@ -2,11 +2,6 @@ html, body, ion-app, ion-content, ion-page, .nav-decor {
     background-color: transparent !important;
 }
 
-#ionball {
-    position: absolute;
-    bottom: 30px;
-    left: calc(50% - 50px);
-    width: 100px;
-    height: 100px;
-    background-image: url(../../assets/icon/favicon.png);
+#imagem_apoio {
+    background-image: url("../../assets/imagens/contorno_cafe.png");
 }
