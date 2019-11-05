@@ -33,7 +33,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     this.navigation.GalleryComponent();
   }
 
-  sendPhoto() {
+  sendPhotoToClassify() {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
     this.apiService.sendOnePhoto(photo).then(data => {
       this.utils.presentLoading();
