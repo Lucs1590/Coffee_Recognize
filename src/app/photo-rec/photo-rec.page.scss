@@ -1,7 +1,11 @@
 html, body, ion-app, ion-content, ion-page, .nav-decor {
-    background-color: transparent !important;
+    --background: transparent;
+    --ion-color-base: transparent !important;
 }
 
 #imagem_apoio {
-    background-image: url("../../assets/imagens/contorno_cafe.png");
+    background-image: url("../../assets/imagens/contorno_cafe.png") !important;
+    height: 100%;
+    background-repeat: no-repeat;
+    margin-left: calc(50% - 9.25rem);
 }
