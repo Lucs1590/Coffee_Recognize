@@ -24,8 +24,6 @@ export class PhotoQuantify implements OnInit, OnDestroy {
     if (!this.subscription) {
       this.subscription = new Subscription();
     }
-    this.presentAlertPrompt();
-    this.send_quantPhoto(5);
   }
 
   ngOnDestroy() {
@@ -34,30 +32,5 @@ export class PhotoQuantify implements OnInit, OnDestroy {
 
   close() {
     this.navigation.PreviewComponent(this.utils.currentImage);
-  }
-
-  send_quantPhoto() {
-    this.apiService.sendOnePhotoToQuantify(this.utils.currentImage).subscribe(data => {
-      this.utils.presentLoading();
-      this.processedImage = data;
-      this.processed = false;
-      this.utils.presentToast('Processing performed successfully. 🎉');
-    }, err => {
-      console.log(err);
-      this.utils.presentToast('We had an error uploading, please try again! 🥺');
-    });
-  }
-
-  async presentAlertPrompt() {
-    const alert = await this.utils.alertController.create({
-      header: 'Enter leaf width!',
-      inputs: [{ name: 'measure', type: 'text', placeholder: '5cm' }],
-      buttons: [{
-        text: 'Cancel', role: 'cancel', cssClass: 'secondary',
-        handler: () => { this.navigation.PreviewComponent(this.utils.currentImage); }
-      },
-      { text: 'OK', handler: (data) => { this.send_quantPhoto(data.mensure); } }]
-    });
-    await alert.present();
   }
 }

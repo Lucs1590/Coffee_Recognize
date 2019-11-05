@@ -48,6 +48,14 @@ export class PreviewPage implements OnInit, OnDestroy {
 
   sendPhotoToQuantify() {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
-
+    this.apiService.sendOnePhotoToQuantify(photo).then(data => {
+      this.utils.presentLoading();
+      this.utils.processedImage = data;
+      this.utils.processed = true;
+      this.utils.presentToast('Processing performed successfully. 🎉');
+    }, err => {
+      console.log(err);
+      this.utils.presentToast('We had an error uploading, please try again! 🥺');
+    });
   }
 }
