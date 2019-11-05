@@ -45,4 +45,9 @@ export class PreviewPage implements OnInit, OnDestroy {
       this.utils.presentToast('We had an error uploading, please try again! 🥺');
     });
   }
+
+  sendPhotoToQuantify() {
+    const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
+
+  }
 }
