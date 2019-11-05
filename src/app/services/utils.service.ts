@@ -6,8 +6,9 @@ import { ToastController, LoadingController, AlertController } from '@ionic/angu
 })
 export class UtilsService {
   currentImage: any;
-  processedImage: any;
-  processed: boolean;
+  processedImage: string;
+  executed: boolean;
+  percent_image: string;
 
   constructor(
     public toastController: ToastController,
@@ -53,6 +54,7 @@ export class UtilsService {
   clearPreviewEnv() {
     this.currentImage = null;
     this.processedImage = null;
-    this.processed = false;
+    this.percent_image = null;
+    this.executed = false;
   }
 }
