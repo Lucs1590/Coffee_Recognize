@@ -11,6 +11,7 @@ import { NavigationsService } from '../services/navigations.service';
 })
 export class PreviewPage implements OnInit, OnDestroy {
   subscription: Subscription;
+  infos: any;
 
   constructor(
     public utils: UtilsService,
@@ -22,7 +23,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     if (!this.subscription) {
       this.subscription = new Subscription();
     }
-    this.utils.processed = false;
+    this.utils.executed = false;
   }
 
   ngOnDestroy(): void {
@@ -38,7 +39,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     this.apiService.sendOnePhotoToClassify(photo).then(data => {
       this.utils.presentLoading();
       this.utils.processedImage = this.apiService.API_URL + '/results/' + data.imagens[0];
-      this.utils.processed = true;
+      this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {
       console.log(err);
@@ -50,8 +51,10 @@ export class PreviewPage implements OnInit, OnDestroy {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
     this.apiService.sendOnePhotoToQuantify(photo).then(data => {
       this.utils.presentLoading();
-      this.utils.processedImage = data;
-      this.utils.processed = true;
+      this.utils.processedImage = this.apiService.API_URL + '/results/' + data.imagens[0];
+      this.utils.percent_image = this.apiService.API_URL + '/results/' + data.imagens[1];
+      this.infos = data[2];
+      this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {
       console.log(err);
