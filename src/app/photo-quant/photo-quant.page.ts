@@ -25,7 +25,7 @@ export class PhotoQuantify implements OnInit, OnDestroy {
       this.subscription = new Subscription();
     }
     this.presentAlertPrompt();
-    this.send_calcPhoto(5);
+    this.send_quantPhoto(5);
   }
 
   ngOnDestroy() {
@@ -36,8 +36,8 @@ export class PhotoQuantify implements OnInit, OnDestroy {
     this.navigation.PreviewComponent(this.utils.currentImage);
   }
 
-  send_calcPhoto(mensure) {
-    this.apiService.send_calcOnePhoto(this.utils.currentImage, mensure).subscribe(data => {
+  send_quantPhoto() {
+    this.apiService.sendOnePhotoToQuantify(this.utils.currentImage).subscribe(data => {
       this.utils.presentLoading();
       this.processedImage = data;
       this.processed = false;
@@ -56,7 +56,7 @@ export class PhotoQuantify implements OnInit, OnDestroy {
         text: 'Cancel', role: 'cancel', cssClass: 'secondary',
         handler: () => { this.navigation.PreviewComponent(this.utils.currentImage); }
       },
-      { text: 'OK', handler: (data) => { this.send_calcPhoto(data.mensure); } }]
+      { text: 'OK', handler: (data) => { this.send_quantPhoto(data.mensure); } }]
     });
     await alert.present();
   }
