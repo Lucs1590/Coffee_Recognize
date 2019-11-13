@@ -36,8 +36,8 @@ export class PreviewPage implements OnInit, OnDestroy {
 
   sendPhotoToClassify() {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
+    this.utils.presentLoading();
     this.apiService.sendOnePhotoToClassify(photo).then(data => {
-      this.utils.presentLoading();
       this.utils.processedImage = this.apiService.API_URL + '/results/' + data.imagens[0];
       this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
@@ -49,11 +49,10 @@ export class PreviewPage implements OnInit, OnDestroy {
 
   sendPhotoToQuantify() {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
+    this.utils.presentLoading();
     this.apiService.sendOnePhotoToQuantify(photo).then(data => {
-      this.utils.presentLoading();
-      this.utils.processedImage = this.apiService.API_URL + '/results/' + data.imagens[0];
-      this.utils.percent_image = this.apiService.API_URL + '/results/' + data.imagens[1];
-      this.infos = data[2];
+      this.utils.processedImage = this.utils.currentImage;
+      this.infos = data[0];
       this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {
