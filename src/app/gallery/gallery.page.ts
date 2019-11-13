@@ -41,7 +41,7 @@ export class GalleryPage implements OnInit {
         (err: any) => { console.log(err); });
     });
     Promise.all(promiseBatch).then(res => {
-      this.apiService.processCommand().subscribe(() => {
+      this.apiService.processCommand().then(() => {
         this.utils.presentToast('Processing performed successfully. We will send you an email. 🎉');
         this.clearPhotos();
       }, (err: any) => {
