@@ -61,7 +61,7 @@ export class UtilsService {
   async presentAlert(title: string, message: string) {
     const alert = await this.alertController.create({
       header: title,
-      message: `Leaf + Rust: ${String(message).split(',')[1]}\nRust: ${String(message).split(',')[0]}`,
+      message: `Leaf + Rust: ${String(message).split(',')[1]}%\nSeverity of contamination: ${String(message).split(',')[0]}%`,
       buttons: ['OK']
     });
 
