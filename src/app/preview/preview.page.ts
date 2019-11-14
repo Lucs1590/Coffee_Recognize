@@ -52,7 +52,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     this.utils.presentLoading();
     this.apiService.sendOnePhotoToQuantify(photo).then(data => {
       this.utils.processedImage = this.utils.currentImage;
-      this.infos = data['message'];
+      this.utils.presentAlert('Quanfity Percent', data['message']);
       this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {

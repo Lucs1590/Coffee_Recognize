@@ -57,4 +57,14 @@ export class UtilsService {
     this.percent_image = null;
     this.executed = false;
   }
+
+  async presentAlert(title: string, message: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: `Leaf + Rust: ${String(message).split(',')[1]}\nRust: ${String(message).split(',')[0]}`,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
