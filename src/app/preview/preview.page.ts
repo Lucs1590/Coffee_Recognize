@@ -38,7 +38,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
     this.utils.presentLoading();
     this.apiService.sendOnePhotoToClassify(photo).then(data => {
-      this.utils.processedImage = this.apiService.API_URL + '/results/' + data.imagens[0];
+      this.utils.processedImage = 'data:image/jpeg;base64,' + data['msg'];
       this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {
