@@ -43,7 +43,7 @@
     "cordova-sqlite-storage": "^2.6.0",
     "core-js": "^2.6.9",
     "es6-promise-plugin": "^4.2.2",
-    "handlebars": "^4.5.3",
+    "handlebars": "^4.6.0",
     "js-yaml": "^3.13.1",
     "karma-teamcity-reporter": "^1.1.0",
     "rxjs": "~6.3.3",
