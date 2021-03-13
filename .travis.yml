@@ -8,10 +8,6 @@ node_js:
 
 addons:
   chrome: stable
-  code_climate:
-    repo_token:
-      secure: "6f9ccfe3bc4a26266bdc04bad4fc976ef51ef70f6a60207432951b84f8bbc606"
-
 
 # before_install:
 #   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9876 http://localhost &
@@ -22,16 +18,17 @@ cache:
 
 install:
   - npm install -g
+  - npm install npm@latest -g
 
 before_script:
-  - npm install codeclimate-test-reporter -g
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-  - npm run coverage
 
 after_script:
-  - codeclimate-test-reporter < ./coverage/lcov.info
   - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.frontend.json coverage/lcov.info
   - ./cc-test-reporter sum-coverage coverage/codeclimate.frontend.json                  # Sum both coverage parts into coverage/codeclimate.json
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
