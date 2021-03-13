@@ -30,7 +30,7 @@ To perform a transpilation to add the application to your phone, there may be di
 ## How it works?
 This is only a part of the whole project, with here, basically, the interface between the user and the model. An image to portray well what the process is, can be found below:
 
-![Flowchart]()
+![Flowchart](https://raw.githubusercontent.com/Lucs1590/Coffee_Recognize/master/src/assets/imagens/operation.png)
 
 The API part can be accessed at: https://github.com/AlvaroCavalcante/Coffee_Recognize_API
 
