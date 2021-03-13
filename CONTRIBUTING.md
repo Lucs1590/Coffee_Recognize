@@ -1,37 +1,37 @@
-# Contribuindo
-Guia para contribuir para o projeto.
+# Contributing
+Guide to contribute to the project.
 
-Issues ou pull requests que não estejam de acordo com este guia serão recusados.
+Issues or pull requests that do not comply with this guide will be declined.
 
-Linguagem
+Language
 ------
- - Commits devem ser feitos em inglês.
- - Issues, pull requests e revisões podem ser feitas em português para facilitar a comunicação e chegar a um consenso rapidamente.
+ - Commits must be made in English.
+ - Issues, pull requests and revisions can be made in Portuguese to facilitate communication and reach consensus quickly.
 
-Desenvolvimento
+Development
 -----
- - Desenvolva apenas em seu branch.
- - Faça rebase com o master antes de criar pull requests.
- - Faça rebase do master em seu branch diariamente.
- - Faça squash dos seus commits que não estão completos (Work In Progress).
+ - Develop only on your branch.
+ - Rebase with the master before creating pull requests.
+ - Rebase the master on your branch daily.
+ - Squash your commits that are not complete (Work In Progress).
 
-O que não fazer
+What not to do?
 -----
- - Desenvolver direto no master.
- - Merge de branches no master antes que o código seja revisado.
- - Merge de branches no master antes que todas as discussões tenham se encerrado.
- - Merge de pull requests que tenham reviews pendentes (requested ou ainda não finalizadas)
+ - Develop directly on the master.
+ - Merge branches into the master before the code is reviewed.
+ - Merge branches into the master before all discussions are over.
+ - Merge of pull requests that have pending reviews (requested or not yet finalized)
 
 Commits
 -----
- - Faça commits pequenos, que descrevem alterações únicas.
- - Seja breve e suscinto no título das mensagens do commit.
- - Use o corpo da mensagem para explicações adicionais.
- - Se esforce para manter o master o mais limpo possível.
+ - Make small commits, which describe unique changes.
+ - Be brief and succinct in the title of the commit messages.
+ - Use the body of the message for further explanation.
+ - Make an effort to keep the master as clean as possible.
 
 Issues
 -----
-Use issues para discutir problemas e ideias para o projeto.
- - Descreva qual é o problema em questão.
- - Se possível, dê soluções para o problema.
- - Faça links para código ou para referências a outras issues/pull requests se necessário.
+Use issues to discuss problems and ideas for the project.
+ - Describe the problem in question.
+ - If possible, provide solutions to the problem.
+ - Make links to code or references to other issues / pull requests if necessary.
