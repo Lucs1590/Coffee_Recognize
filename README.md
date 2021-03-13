@@ -1,5 +1,5 @@
 # Coffee_Recognize
-[![Build Status](https://travis-ci.org/Lucs1590/Coffee_Recognize.svg?branch=master)](https://travis-ci.org/Lucs1590/Coffee_Recognize)
+[![Build Status](https://www.travis-ci.com/Lucs1590/Coffee_Recognize.svg?branch=master)](https://www.travis-ci.com/Lucs1590/Coffee_Recognize)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a7e458e43bf1ca22e734/maintainability)](https://codeclimate.com/github/Lucs1590/Coffee_Recognize/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a7e458e43bf1ca22e734/test_coverage)](https://codeclimate.com/github/Lucs1590/Coffee_Recognize/test_coverage)
 [![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.png?v=101)](https://github.com/ellerbrock/typescript-badges/)
