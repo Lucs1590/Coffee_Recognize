@@ -14,6 +14,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { PreviewPageModule } from './preview/preview.module';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { PreviewPageModule } from './preview/preview.module';
     HttpClientModule
   ],
   providers: [
+    CameraPreview,
     StatusBar,
     SplashScreen,
     Camera,

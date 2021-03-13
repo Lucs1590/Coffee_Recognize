@@ -18,7 +18,7 @@ export class Home implements OnInit {
   ) { }
 
   text_share = 'I found a very cool app and I remembered you. Access the link and have a look.';
-  download_url = 'http://bit.ly/Coffe-Recognize';
+  download_url = 'http://bit.ly/Coffee-Recognize';
   img_url = 'https://raw.githubusercontent.com/Lucs1590/Coffee_Recognize/master/src/assets/imagens/leaf-recognition-share.jpg';
 
   ngOnInit() {
@@ -61,7 +61,11 @@ export class Home implements OnInit {
           handler: () => { this.utils.presentToast('We will not be able to send you the photos! 🥺'); }
         },
         {
-          text: 'OK', handler: (data) => { this.storage.set('email', data.email); this.storage.set('access', 1); }
+          text: 'OK', handler: (data) => {
+            if (data.email !== '' && data.email.match('@')) {
+              this.storage.set('email', data.email); this.storage.set('access', 1);
+            } else { this.presentAlertPrompt(); }
+          }
         }
       ]
     });

@@ -10,9 +10,8 @@ import { NavigationsService } from '../services/navigations.service';
   styleUrls: ['./preview.page.scss'],
 })
 export class PreviewPage implements OnInit, OnDestroy {
-  processedImage;
-  processed: boolean;
   subscription: Subscription;
+  infos: any;
 
   constructor(
     public utils: UtilsService,
@@ -24,7 +23,7 @@ export class PreviewPage implements OnInit, OnDestroy {
     if (!this.subscription) {
       this.subscription = new Subscription();
     }
-    this.processed = false;
+    this.utils.executed = false;
   }
 
   ngOnDestroy(): void {
@@ -32,16 +31,29 @@ export class PreviewPage implements OnInit, OnDestroy {
   }
 
   close() {
-    this.navigation.RecognitionComponent();
+    this.navigation.GalleryComponent();
   }
 
-  sendPhoto() {
+  sendPhotoToClassify() {
     const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
-    this.apiService.sendOnePhoto(photo).then(data => {
-      this.utils.presentLoading();
-      console.log(`Preview Data: ${data}`);
-      this.processedImage = data;
-      this.processed = false;
+    this.utils.presentLoading();
+    this.apiService.sendOnePhotoToClassify(photo).then(data => {
+      this.utils.processedImage = 'data:image/jpeg;base64,' + data['msg'];
+      this.utils.executed = true;
+      this.utils.presentToast('Processing performed successfully. 🎉');
+    }, err => {
+      console.log(err);
+      this.utils.presentToast('We had an error uploading, please try again! 🥺');
+    });
+  }
+
+  sendPhotoToQuantify() {
+    const photo = this.utils.blobToFile(this.utils.b64toBlob(this.utils.currentImage));
+    this.utils.presentLoading();
+    this.apiService.sendOnePhotoToQuantify(photo).then(data => {
+      this.utils.processedImage = this.utils.currentImage;
+      this.utils.presentAlert('Quanfity Percent', data['message']);
+      this.utils.executed = true;
       this.utils.presentToast('Processing performed successfully. 🎉');
     }, err => {
       console.log(err);

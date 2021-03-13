@@ -1,19 +1,28 @@
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PhotoRecognize } from './photo-rec.page';
-import { Camera } from '@ionic-native/camera/ngx';
+import { Routes, RouterModule } from '@angular/router';
+
+import { IonicModule } from '@ionic/angular';
+
+import { PhotoRecPage } from './photo-rec.page';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PhotoRecPage
+  }
+];
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: PhotoRecognize }]),
+    IonicModule,
+    RouterModule.forChild(routes)
   ],
-  providers: [Camera],
-  declarations: [PhotoRecognize]
+  providers: [CameraPreview],
+  declarations: [PhotoRecPage]
 })
-export class PhotoRecognizePageModule { }
+export class PhotoRecPageModule { }

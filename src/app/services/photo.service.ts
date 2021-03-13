@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Storage } from '@ionic/storage';
-
+import { CameraPreview, CameraPreviewOptions, CameraPreviewPictureOptions } from '@ionic-native/camera-preview/ngx';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,34 +9,34 @@ export class PhotoService {
   public photos: Photo[] = [];
 
   constructor(
-    private camera: Camera,
-    private storage: Storage
+    private storage: Storage,
+    private cameraPreview: CameraPreview
   ) { }
+  cameraOpts: CameraPreviewOptions = {
+    x: 0,
+    y: 0,
+    camera: 'rear',
+    width: window.innerWidth,
+    height: window.innerHeight,
+    toBack: true
+  };
+
+  cameraPictureOpts: CameraPreviewPictureOptions = {
+    width: 720,
+    height: 1280,
+    quality: 100
+  };
 
   takePicture() {
-    const options: CameraOptions = {
-      quality: 100,
-      targetHeight: 700,
-      targetWidth: 400,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true
-    };
-
-    this.camera.getPicture(options).then((imageData) => {
-      // Add new photo to gallery
+    this.cameraPreview.takePicture(this.cameraPictureOpts).then((imageData) => {
       this.photos.unshift({
         data: 'data:image/jpeg;base64,' + imageData
       });
-
-      // Save all photos for later viewing
       this.storage.set('photos', this.photos);
     }, (err) => {
       // Handle error
       console.log('Camera issue: ' + err);
     });
-
   }
 
   loadSaved() {
@@ -46,6 +45,19 @@ export class PhotoService {
     });
   }
 
+  startCamera() {
+    this.cameraPreview.startCamera(this.cameraOpts).then(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
+
+  stopCamera() {
+    this.cameraPreview.stopCamera();
+  }
 }
 
 class Photo {

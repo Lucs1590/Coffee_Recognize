@@ -18,11 +18,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'photo-rec',
+        path: 'gallery',
         children: [
           {
             path: '',
-            loadChildren: '../photo-rec/photo-rec.module#PhotoRecognizePageModule'
+            loadChildren: '../gallery/gallery.module#GalleryPageModule'
           }
         ]
       },

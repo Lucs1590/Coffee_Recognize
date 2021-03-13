@@ -1,30 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PhotoRecognize } from './photo-rec.page';
-import { Camera } from '@ionic-native/camera/ngx';
-import { IonicStorageModule } from '@ionic/storage';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
-describe('PhotoRecognize', () => {
-  let component: PhotoRecognize;
-  let fixture: ComponentFixture<PhotoRecognize>;
+import { PhotoRecPage } from './photo-rec.page';
+
+describe('PhotoRecPage', () => {
+  let component: PhotoRecPage;
+  let fixture: ComponentFixture<PhotoRecPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PhotoRecognize],
+      declarations: [ PhotoRecPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [Camera],
-      imports: [
-        IonicStorageModule.forRoot(),
-        HttpClientTestingModule,
-        RouterTestingModule
-      ]
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PhotoRecognize);
+    fixture = TestBed.createComponent(PhotoRecPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

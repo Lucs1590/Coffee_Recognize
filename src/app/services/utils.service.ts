@@ -6,6 +6,9 @@ import { ToastController, LoadingController, AlertController } from '@ionic/angu
 })
 export class UtilsService {
   currentImage: any;
+  processedImage: string;
+  executed: boolean;
+  percent_image: string;
 
   constructor(
     public toastController: ToastController,
@@ -46,5 +49,23 @@ export class UtilsService {
     b.lastModifiedDate = new Date();
     b.name = String(Date.now());
     return <File>theBlob;
+  }
+
+  clearPreviewEnv() {
+    this.currentImage = null;
+    this.processedImage = null;
+    this.percent_image = null;
+    this.executed = false;
+  }
+
+  async presentAlert(title: string, message: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      // tslint:disable-next-line: max-line-length
+      message: `Leaf + Rust: ${String(message).split(',')[1].replace('[', '').replace(']', '')}% || Severity of contamination: ${String(message).split(',')[0].replace('[', '').replace(']', '')}%`,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

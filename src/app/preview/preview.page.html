@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="arrow-back" (click)="navigation.RecognitionComponent()" size="large" class="ion-float-left">
+    <ion-icon name="arrow-back" (click)="navigation.GalleryComponent()" size="large" class="ion-float-left">
     </ion-icon>
     <ion-title style="height:2rem;">
       Preview
@@ -9,21 +9,22 @@
 </ion-header>
 
 <ion-content>
-  <img [src]="processedImage" *ngIf="processed" />
-  <img [src]="utils.currentImage" *ngIf="!processed" />
+  <img [src]="utils.processedImage" *ngIf="utils.executed" />
+  <!-- <img [src]="percent_image" *ngIf="utils.executed" /> -->
+  <img [src]="utils.currentImage" *ngIf="!utils.executed" />
 
 
-  <ion-fab horizontal="end" vertical="top" slot="fixed">
+  <ion-fab horizontal="end" vertical="top" slot="fixed" *ngIf="!utils.executed">
     <ion-fab-button color="light">
       <ion-icon name="more"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="bottom">
 
-      <ion-fab-button color="light" (click)="sendPhoto()" data-desc="Process image">
+      <ion-fab-button color="light" (click)="sendPhotoToClassify()" data-desc="Classify image">
         <ion-icon name="play-circle"></ion-icon>
       </ion-fab-button>
 
-      <ion-fab-button color="light" (click)="navigation.QuantifyComponent()" data-desc="Quantify image">
+      <ion-fab-button color="light" (click)="sendPhotoToQuantify()" data-desc="Quantify image">
         <ion-icon name="calculator"></ion-icon>
       </ion-fab-button>
 
