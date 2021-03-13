@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 on:
@@ -29,3 +27,11 @@ jobs:
 
       - name: Run tests
         run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+
+      - name: Codecov Node
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          fail_ci_if_error: true
+          verbose: true
