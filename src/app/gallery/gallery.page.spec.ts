@@ -5,8 +5,9 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 
-describe('PhotoRecognize', () => {
+describe('Gallery', () => {
   let component: GalleryPage;
   let fixture: ComponentFixture<GalleryPage>;
 
@@ -14,7 +15,7 @@ describe('PhotoRecognize', () => {
     TestBed.configureTestingModule({
       declarations: [GalleryPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [Camera],
+      providers: [Camera, CameraPreview],
       imports: [
         IonicStorageModule.forRoot(),
         HttpClientTestingModule,

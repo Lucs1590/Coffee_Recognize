@@ -6,10 +6,11 @@ import { IonicStorageModule } from '@ionic/storage';
 import { GalleryPage } from '../gallery/gallery.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 
 describe('PhotoService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [Camera],
+    providers: [Camera, CameraPreview],
     imports: [IonicStorageModule.forRoot(), HttpClientTestingModule],
     declarations: [GalleryPage],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
