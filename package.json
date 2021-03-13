@@ -51,7 +51,7 @@
     "json-stringify-safe": "^5.0.1",
     "karma-teamcity-reporter": "^1.1.0",
     "psl": "^1.8.0",
-    "rxjs": "^6.3.3",
+    "rxjs": "^6.6.6",
     "shelljs": "^0.8.3",
     "zone.js": "~0.10.2"
   },
