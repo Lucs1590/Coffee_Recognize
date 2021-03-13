@@ -17,8 +17,8 @@ cache:
     - ./node_modules
 
 install:
-  - npm install -g
   - npm install npm@latest -g
+  - npm install
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
