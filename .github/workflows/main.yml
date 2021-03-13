@@ -22,9 +22,6 @@ jobs:
       with:
         node-version: '14'
         check-latest: true
-
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@v0.0.0
     
     - name: Instalacao Node
     - run: npm install
