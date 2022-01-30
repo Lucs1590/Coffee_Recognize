@@ -30,7 +30,7 @@
     "@ionic/pro": "2.0.4",
     "@ionic/storage": "^2.2.0",
     "cordova-android": "8.0.0",
-    "cordova-ios": "5.0.0",
+    "cordova-ios": "5.0.1",
     "cordova-plugin-camera": "~4.0.3",
     "cordova-plugin-camera-preview": "^0.11.0",
     "cordova-plugin-device": "^2.0.3",
